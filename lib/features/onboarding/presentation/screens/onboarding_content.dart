@@ -20,7 +20,7 @@ class OnBoardingContent extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(
-            height: 100,
+            height: 20,
             width: 20,
           ),
           SizedBox(

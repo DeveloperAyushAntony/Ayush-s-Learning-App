@@ -13,13 +13,23 @@ final TextStyle heading2 = GoogleFonts.openSans(
   color: Colors.black,
 );
 
-final TextStyle bodyText = GoogleFonts.lato(
+final TextStyle subtext = GoogleFonts.kumbhSans(
+  fontSize: 18.0,
+  fontWeight: FontWeight.w600,
+  color: Colors.black,
+);
+final TextStyle logotext = GoogleFonts.kumbhSans(
+  fontSize: 36.0,
+  fontWeight: FontWeight.bold,
+  color: Colors.black,
+);
+final TextStyle bodyText = GoogleFonts.karla(
   fontSize: 16.0,
   color: Colors.black,
 );
 
 final TextStyle buttonText = GoogleFonts.roboto(
-  fontSize: 14.0,
+  fontSize: 19.0,
   fontWeight: FontWeight.bold,
-  color: Colors.white,
+  color: const Color.fromARGB(255, 0, 0, 0),
 );

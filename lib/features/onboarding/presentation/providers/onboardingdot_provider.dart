@@ -7,7 +7,8 @@ class OnboardingdotProvider extends ChangeNotifier {
     _currentIndex = index;
     notifyListeners();
   }
-  void updateIndex(int index){
+
+  void updateIndex(int index) {
     _currentIndex = index;
     notifyListeners();
   }
