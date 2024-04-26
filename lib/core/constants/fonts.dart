@@ -33,3 +33,14 @@ final TextStyle buttonText = GoogleFonts.roboto(
   fontWeight: FontWeight.bold,
   color: const Color.fromARGB(255, 0, 0, 0),
 );
+
+final TextStyle appText = GoogleFonts.lusitana(
+  fontSize: 22.0,
+  fontWeight: FontWeight.bold,
+  color: const Color.fromARGB(255, 0, 0, 0),
+);
+final TextStyle appText2 = GoogleFonts.lusitana(
+  fontSize: 17.0,
+  fontWeight: FontWeight.bold,
+  color: const Color.fromARGB(255, 0, 0, 0),
+);

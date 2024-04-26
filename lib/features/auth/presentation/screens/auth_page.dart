@@ -87,7 +87,9 @@ class AuthPage extends StatelessWidget {
               left: 155,
               child: TextButton(
                 //text button Login
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed("/loginpage");
+                },
                 style: TextButton.styleFrom(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0))),
