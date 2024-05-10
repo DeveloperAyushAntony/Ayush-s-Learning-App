@@ -1,4 +1,5 @@
-import 'package:awoke_learning_app/core/constants/fonts.dart';
+import 'package:awoke_learning_app/core/utils/constants.dart';
+import 'package:awoke_learning_app/core/utils/fonts.dart';
 import 'package:awoke_learning_app/features/auth/presentation/screens/auth_page.dart';
 import 'package:awoke_learning_app/features/onboarding/presentation/onboarding_data.dart';
 import 'package:awoke_learning_app/features/onboarding/presentation/providers/onboardingdot_provider.dart';
@@ -30,9 +31,7 @@ class OnBoardingScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        const SizedBox(
-                          height: 80,
-                        ),
+                        kHeight80,
                         TextButton(
                             onPressed: () {
                               Navigator.pushReplacement(
@@ -76,9 +75,7 @@ class OnBoardingScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 45,
-                    ),
+                    kHeight45,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -128,9 +125,7 @@ class OnBoardingScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 45,
-                    )
+                    kHeight45
                   ],
                 );
               },

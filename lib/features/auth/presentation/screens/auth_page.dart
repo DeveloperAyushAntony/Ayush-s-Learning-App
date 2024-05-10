@@ -1,5 +1,5 @@
-import 'package:awoke_learning_app/core/app_strings.dart';
-import 'package:awoke_learning_app/core/constants/fonts.dart';
+import 'package:awoke_learning_app/core/utils/app_strings.dart';
+import 'package:awoke_learning_app/core/utils/fonts.dart';
 import 'package:awoke_learning_app/features/auth/presentation/widgets/custom_signinbutton.dart';
 import 'package:awoke_learning_app/features/auth/presentation/widgets/or_widget.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +42,7 @@ class AuthPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        AppString
+                        AppStrings
                             .appName, //app name from app_strings.dart ....**Name of the app can be changed in the future
                         style: logotext,
                       ),
@@ -78,7 +78,7 @@ class AuthPage extends StatelessWidget {
               top: 655,
               left: 95,
               child: Text(
-                "Already Have an account?", //account widget
+                AppStrings.accountQuestion, //account widget
                 style: bodyText,
               ),
             ),

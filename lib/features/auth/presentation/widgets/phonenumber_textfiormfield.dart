@@ -1,4 +1,4 @@
-import 'package:awoke_learning_app/core/constants/fonts.dart';
+import 'package:awoke_learning_app/core/utils/fonts.dart';
 import 'package:flutter/material.dart';
 
 class PhoneNumberFormField extends StatelessWidget {
@@ -12,16 +12,27 @@ class PhoneNumberFormField extends StatelessWidget {
         SizedBox(
           width: 250,
           child: TextFormField(
+            cursorColor: const Color.fromARGB(255, 25, 2, 155),
             controller: mobileTextcontroller,
-            keyboardType: TextInputType.phone, // Set keyboard type to phone
+            keyboardType: TextInputType.number,
+            maxLength: 10,
+            // Set keyboard type to phone
 
             decoration: InputDecoration(
+              prefix: const Text('+91 ', style: TextStyle(color: Colors.black)),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+                borderSide: const BorderSide(
+                  color: Color.fromARGB(255, 4, 34, 168),
+                  width: 2,
+                ),
+              ),
               contentPadding: const EdgeInsets.only(left: 25),
               hintText: 'Enter phone number',
-              prefixText: "+91",
+              suffixStyle: appText,
               prefixStyle: buttonText,
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(20.0),
               ),
             ),
             // validator: (value) {

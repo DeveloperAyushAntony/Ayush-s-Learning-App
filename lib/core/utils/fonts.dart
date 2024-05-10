@@ -33,13 +33,28 @@ final TextStyle buttonText = GoogleFonts.roboto(
   fontWeight: FontWeight.bold,
   color: const Color.fromARGB(255, 0, 0, 0),
 );
+final TextStyle buttonText2 = GoogleFonts.roboto(
+  fontSize: 19.0,
+  fontWeight: FontWeight.bold,
+  color: const Color.fromARGB(255, 255, 255, 255),
+);
 
 final TextStyle appText = GoogleFonts.lusitana(
   fontSize: 22.0,
   fontWeight: FontWeight.bold,
-  color: const Color.fromARGB(255, 0, 0, 0),
+  color: const Color.fromARGB(255, 2, 2, 2),
+);
+final TextStyle appTexttitle = GoogleFonts.lusitana(
+  fontSize: 22.0,
+  fontWeight: FontWeight.bold,
+  color: const Color.fromARGB(255, 255, 255, 255),
 );
 final TextStyle appText2 = GoogleFonts.lusitana(
+  fontSize: 17.0,
+  fontWeight: FontWeight.bold,
+  color: const Color.fromARGB(255, 0, 0, 0),
+);
+final TextStyle appTextotptext = GoogleFonts.montserrat(
   fontSize: 17.0,
   fontWeight: FontWeight.bold,
   color: const Color.fromARGB(255, 0, 0, 0),

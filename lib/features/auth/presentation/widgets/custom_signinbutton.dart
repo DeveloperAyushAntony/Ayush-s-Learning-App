@@ -1,5 +1,5 @@
-import 'package:awoke_learning_app/core/app_strings.dart';
-import 'package:awoke_learning_app/core/constants/fonts.dart';
+import 'package:awoke_learning_app/core/utils/app_strings.dart';
+import 'package:awoke_learning_app/core/utils/fonts.dart';
 import 'package:flutter/material.dart';
 
 class CustomSigninButton extends StatelessWidget {
@@ -20,14 +20,13 @@ class CustomSigninButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(60),
             onTap: () {},
             child: ListTile(
-
               leading: Image.asset(
                 "assets/images/google.png",
                 height: 34,
                 width: 30,
               ),
               title: Text(
-                AppString.googlebutton,
+                AppStrings.googlebutton,
                 style: buttonText,
               ),
             ),
