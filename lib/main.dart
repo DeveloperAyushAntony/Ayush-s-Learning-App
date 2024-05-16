@@ -1,5 +1,7 @@
 import 'package:awoke_learning_app/features/auth/presentation/screens/auth_page.dart';
 import 'package:awoke_learning_app/features/auth/presentation/screens/loginpage.dart';
+import 'package:awoke_learning_app/features/auth/presentation/screens/otp_page.dart';
+import 'package:awoke_learning_app/features/auth/presentation/screens/user_data_page.dart';
 import 'package:awoke_learning_app/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -31,7 +33,9 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => OnBoardingScreen(), // Route for the OnBoardingScreen
         '/signup': (context) => const AuthPage(), // Route for the SignUpPage
-        '/loginpage': (context) => const Loginpage()
+        '/loginpage': (context) => const Loginpage(),
+        '/otppage': (context) => const OtpPage(),
+        '/userdatapage': (context) => const UserDataPage(),
       },
     );
   }

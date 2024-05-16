@@ -2,7 +2,7 @@ import 'package:awoke_learning_app/core/utils/constants.dart';
 import 'package:awoke_learning_app/core/utils/fonts.dart';
 import 'package:awoke_learning_app/core/widgets/top_blue_gradientcard.dart';
 import 'package:awoke_learning_app/features/auth/presentation/widgets/back_button.dart';
-import 'package:awoke_learning_app/features/auth/presentation/widgets/elevated_send_otp_button.dart';
+import 'package:awoke_learning_app/features/auth/presentation/widgets/elevated_custombutton.dart';
 import 'package:awoke_learning_app/features/auth/presentation/widgets/phonenumber_textfiormfield.dart';
 import 'package:flutter/material.dart';
 
@@ -49,7 +49,13 @@ class Loginpage extends StatelessWidget {
                     kHeight25,
                     PhoneNumberFormField(), // phone NUmber TextFormField
                     kHeight45,
-                    const Center(child: ElevatedGetOTPButton())
+                    Center(
+                        child: ElevatedGetOTPButton(
+                      otpbuttonText: "Get OTP",
+                      onPressed: () {
+                        Navigator.of(context).pushNamed("/otppage");
+                      },
+                    ))
                   ],
                 ),
               ),
@@ -70,7 +76,7 @@ class OtpSubText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       "We will send  you a one time password to your registered mobile number",
-      style: appTextotptext,
+      style: appotptext,
       textAlign: TextAlign.center,
     );
   }

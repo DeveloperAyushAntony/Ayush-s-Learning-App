@@ -16,7 +16,7 @@ class PhoneNumberFormField extends StatelessWidget {
             controller: mobileTextcontroller,
             keyboardType: TextInputType.number,
             maxLength: 10,
-            // Set keyboard type to phone
+           
 
             decoration: InputDecoration(
               prefix: const Text('+91 ', style: TextStyle(color: Colors.black)),
@@ -47,3 +47,4 @@ class PhoneNumberFormField extends StatelessWidget {
     );
   }
 }
+

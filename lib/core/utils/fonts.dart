@@ -54,8 +54,13 @@ final TextStyle appText2 = GoogleFonts.lusitana(
   fontWeight: FontWeight.bold,
   color: const Color.fromARGB(255, 0, 0, 0),
 );
-final TextStyle appTextotptext = GoogleFonts.montserrat(
+final TextStyle appotptext = GoogleFonts.montserrat(
   fontSize: 17.0,
   fontWeight: FontWeight.bold,
   color: const Color.fromARGB(255, 0, 0, 0),
+);
+final TextStyle otpheadtext = GoogleFonts.lusitana(
+  fontSize: 25.0,
+  fontWeight: FontWeight.bold,
+  color: const Color.fromARGB(255, 255, 255, 255),
 );
