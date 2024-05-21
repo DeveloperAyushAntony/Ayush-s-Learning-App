@@ -3,6 +3,7 @@ import 'package:awoke_learning_app/core/utils/constants.dart';
 import 'package:awoke_learning_app/core/utils/fonts.dart';
 import 'package:awoke_learning_app/core/widgets/top_blue_gradientcard.dart';
 import 'package:awoke_learning_app/features/auth/presentation/widgets/elevated_custombutton.dart';
+import 'package:awoke_learning_app/features/mainpage/presentation/main_page.dart';
 
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,7 @@ class UserDataPage extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: Stack(
                 children: [
-                  const Gradientbluecard(),
+                  const GradientBlueCard(),
                   kHeight120,
                   Padding(
                     padding: const EdgeInsets.only(top: 220),
@@ -101,7 +102,11 @@ class UserDataPage extends StatelessWidget {
             ),
             kHeight10,
             ElevatedGetOTPButton(
-                otpbuttonText: "Create Account", onPressed: () {}),
+                otpbuttonText: "Create Account",
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                }),
           ],
         ),
       ),

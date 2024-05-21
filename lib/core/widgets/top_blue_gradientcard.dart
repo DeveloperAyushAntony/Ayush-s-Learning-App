@@ -1,7 +1,8 @@
+import 'package:awoke_learning_app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
-class Gradientbluecard extends StatelessWidget {
-  const Gradientbluecard({super.key});
+class GradientBlueCard extends StatelessWidget {
+  const GradientBlueCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +11,9 @@ class Gradientbluecard extends StatelessWidget {
       height: 280,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(40), bottomRight: Radius.circular(40)),
+          bottomLeft: Radius.circular(40),
+          bottomRight: Radius.circular(40),
+        ),
         gradient: LinearGradient(
           begin: Alignment.bottomRight,
           end: Alignment.topLeft,
@@ -19,6 +22,16 @@ class Gradientbluecard extends StatelessWidget {
             Color(0xff1C4FD1),
           ],
         ),
+        boxShadow: [
+          // Use a list of BoxShadow objects
+          BoxShadow(
+            color:
+                kBlackgrey, // Assuming kBlackgrey is defined in app_styles.dart
+            offset: Offset(4.0, 4.0),
+            blurRadius: 10.0,
+            spreadRadius: 2.0,
+          ),
+        ],
       ),
     );
   }
