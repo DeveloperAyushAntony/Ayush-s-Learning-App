@@ -3,7 +3,7 @@ import 'package:awoke_learning_app/core/utils/constants.dart';
 import 'package:awoke_learning_app/core/utils/fonts.dart';
 import 'package:awoke_learning_app/core/widgets/top_blue_gradientcard.dart';
 import 'package:awoke_learning_app/features/auth/presentation/widgets/elevated_custombutton.dart';
-import 'package:awoke_learning_app/features/mainpage/presentation/main_page.dart';
+import 'package:awoke_learning_app/features/home/presentation/screen_homepage.dart';
 
 import 'package:flutter/material.dart';
 
@@ -104,8 +104,8 @@ class UserDataPage extends StatelessWidget {
             ElevatedGetOTPButton(
                 otpbuttonText: "Create Account",
                 onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => const ScreenHome()));
                 }),
           ],
         ),

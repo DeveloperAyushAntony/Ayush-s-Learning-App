@@ -2,8 +2,8 @@ import 'package:awoke_learning_app/features/auth/presentation/screens/auth_page.
 import 'package:awoke_learning_app/features/auth/presentation/screens/loginpage.dart';
 import 'package:awoke_learning_app/features/auth/presentation/screens/otp_page.dart';
 import 'package:awoke_learning_app/features/auth/presentation/screens/user_data_page.dart';
-import 'package:awoke_learning_app/features/mainpage/presentation/main_page.dart';
-import 'package:awoke_learning_app/features/mainpage/providers/bottomnav_index_provider.dart';
+import 'package:awoke_learning_app/features/home/presentation/screen_homepage.dart';
+import 'package:awoke_learning_app/features/home/providers/bottomnav_index_provider.dart';
 import 'package:awoke_learning_app/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => BottomNavIndexProvider())
+        ChangeNotifierProvider(create: (context) => BottomNavIndexProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
           '/loginpage': (context) => const Loginpage(),
           '/otppage': (context) => const OtpPage(),
           '/userdatapage': (context) => const UserDataPage(),
-          '/homepage': (context) => HomeScreen(),
+          '/homepage': (context) => const ScreenHome(),
         },
       ),
     );

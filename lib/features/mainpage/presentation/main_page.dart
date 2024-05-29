@@ -1,71 +1,161 @@
 import 'package:awoke_learning_app/core/utils/app_styles.dart';
-import 'package:awoke_learning_app/features/gemini/presentation/screen_gemini.dart';
-import 'package:awoke_learning_app/features/home/presentation/screen_homepage.dart';
-import 'package:awoke_learning_app/features/mainpage/providers/bottomnav_index_provider.dart';
-import 'package:awoke_learning_app/features/mockclasses/presentation/screen_mockclass.dart';
-import 'package:awoke_learning_app/features/users/presentation/screen_userpage.dart';
+import 'package:awoke_learning_app/core/utils/constants.dart';
+import 'package:awoke_learning_app/features/mainpage/widgets/awoke_logo.dart';
+import 'package:awoke_learning_app/features/mainpage/widgets/drawer_menu_button.dart';
+import 'package:awoke_learning_app/features/mainpage/widgets/green_gradient_widget.dart';
+import 'package:awoke_learning_app/features/mainpage/widgets/home_welcome_text.dart';
+import 'package:awoke_learning_app/features/mainpage/widgets/mentor_image.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
-  final List<dynamic> screens = [
-    const ScreenHome(),
-    const ScreenMockClass(),
-    const ScreenGemini(),
-    const ScreenUserPage()
-  ];
+class HomeUiScreen extends StatelessWidget {
+  const HomeUiScreen({
+    super.key,
+    required this.scaffoldKey,
+  });
+
+  final GlobalKey<ScaffoldState> scaffoldKey;
 
   @override
   Widget build(BuildContext context) {
-    final screenIndexprovider = Provider.of<BottomNavIndexProvider>(context);
-    int currentScreenIndex = screenIndexprovider.fetchCurrentScreenIndex;
-    return Scaffold(
-      bottomNavigationBar: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Card(
-            shadowColor: kBlackgrey,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-            child: SalomonBottomBar(
-              currentIndex: currentScreenIndex,
-              onTap: (value) => screenIndexprovider.updateScreenIndex(value),
-              items: [
-                /// Home
-                SalomonBottomBarItem(
-                  icon: const Icon(Icons.home),
-                  title: const Text("Home"),
-                  selectedColor: Colors.purple,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          kHeight10,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Column(
+                children: [
+                  kHeight30,
+                  DrawerMenuButton(scaffoldKey: scaffoldKey),
+                ],
+              ),
+              kWidth30,
+              const HomeWelcomeText(),
+              kWidth30,
+              const Awokelogo(),
+            ],
+          ),
+          kHeight80,
+          const GreenGradientWidget(
+            headtext: "your mentors",
+          ),
+          kHeight35,
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MentorImageWidget(
+                imagePath: "assets/images/artistpng.png",
+              ),
+              kWidth55,
+              kWidth20,
+              MentorImageWidget(
+                imagePath: "assets/images/artistpng.png",
+              )
+            ],
+          ),
+          kHeight15,
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  height: 120,
+                  width: 220,
+                  color: kPurpleColor,
                 ),
-
-                /// Likes
-                SalomonBottomBarItem(
-                  icon: const Icon(Icons.favorite_border),
-                  title: const Text("Likes"),
-                  selectedColor: Colors.pink,
+                kWidth10,
+                Container(
+                  height: 120,
+                  width: 220,
+                  color: kblueColor,
                 ),
-
-                /// Search
-                SalomonBottomBarItem(
-                  icon: const Icon(Icons.search),
-                  title: const Text("Search"),
-                  selectedColor: Colors.orange,
+                kWidth10,
+                Container(
+                  height: 120,
+                  width: 220,
+                  color: kRedColor,
                 ),
-
-                /// Profile
-                SalomonBottomBarItem(
-                  icon: const Icon(Icons.person),
-                  title: const Text("Profile"),
-                  selectedColor: Colors.teal,
+                kWidth10,
+                Container(
+                  height: 120,
+                  width: 220,
+                  color: kblueColor,
+                ),
+                kWidth10,
+                Container(
+                  height: 120,
+                  width: 220,
+                  color: kblueColor,
                 ),
               ],
             ),
           ),
-        ),
+          kHeight35,
+          const GreenGradientWidget(
+            headtext: "Courses",
+          ),
+          kHeight30,
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              HomeCoursegradientCard(
+                gradientcolors: [
+                  Color(0xff2CB20A),
+                  Color(0xff134C04),
+                ],
+              ),
+              HomeCoursegradientCard(
+                gradientcolors: [
+                  Color(0xff0AA8B2),
+                  Color(0xff04484C),
+                ],
+              ),
+            ],
+          ),
+          kHeight30,
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              HomeCoursegradientCard(
+                gradientcolors: [
+                  Color(0xffFD0514),
+                  Color(0xff97030C),
+                ],
+              ),
+              HomeCoursegradientCard(
+                gradientcolors: [
+                  Color(0xff8E17D7),
+                  Color(0xff4A0C71),
+                ],
+              ),
+            ],
+          )
+        ],
       ),
-      body: screens[currentScreenIndex],
+    );
+  }
+}
+
+class HomeCoursegradientCard extends StatelessWidget {
+  final List<Color> gradientcolors;
+
+  const HomeCoursegradientCard({super.key, required this.gradientcolors});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 140,
+      height: 165,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          gradient: LinearGradient(
+              colors: gradientcolors,
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter)),
+      // child: Column(
+      //   children: [],
+      // ),
     );
   }
 }

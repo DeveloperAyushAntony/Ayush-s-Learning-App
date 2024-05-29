@@ -64,3 +64,18 @@ final TextStyle otpheadtext = GoogleFonts.lusitana(
   fontWeight: FontWeight.bold,
   color: const Color.fromARGB(255, 255, 255, 255),
 );
+final TextStyle mainpageheadtext = GoogleFonts.mavenPro(
+  fontSize: 27.0,
+  fontWeight: FontWeight.bold,
+  color: const Color.fromARGB(255, 0, 0, 0),
+);
+final TextStyle mainpagepersontext = GoogleFonts.mavenPro(
+  fontSize: 35.0,
+  fontWeight: FontWeight.bold,
+  color: const Color.fromARGB(255, 15, 105, 128),
+);
+final TextStyle homeGreadientext = GoogleFonts.mavenPro(
+  fontSize: 19.0,
+  fontWeight: FontWeight.bold,
+  color: const Color.fromARGB(255, 0, 0, 0),
+);
