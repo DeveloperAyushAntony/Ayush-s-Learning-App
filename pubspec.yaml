@@ -16,6 +16,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  carousel_slider: ^4.2.1
   cupertino_icons: ^1.0.6
   flutter:
     sdk: flutter
@@ -46,6 +47,12 @@ flutter:
     - assets\images\happy.png
     - assets\images\menu.png
     - assets\images\artistpng.png
+    - assets\images\mentorplaceholder.png
+    - assets\images\kg.png
+    - assets\images\kids.png
+    - assets\images\schoolteens.png
+    - assets\images\grownups.png
+    - assets\images\veterans.png
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

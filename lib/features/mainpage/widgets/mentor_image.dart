@@ -9,14 +9,18 @@ class MentorImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 95,
       height: 95,
-      decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          image: DecorationImage(
-              image: AssetImage(imagePath), fit: BoxFit.contain)),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(95 / 2),
+        child: FadeInImage(
+          placeholder: const AssetImage("assets/images/mentorplaceholder.png"),
+          fadeInDuration: const Duration(milliseconds: 200),
+          image: AssetImage(imagePath),
+          fit: BoxFit.contain,
+        ),
+      ),
     );
   }
-  
 }
