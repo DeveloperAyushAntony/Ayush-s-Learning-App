@@ -5,3 +5,4 @@ const kBlackgrey = Color.fromARGB(255, 61, 60, 60);
 const kRedColor = Color.fromARGB(255, 204, 33, 21);
 const kYellowcolor = Color.fromARGB(255, 255, 217, 0);
 const kPurpleColor = Colors.purple;
+const kWhiteColor = Color.fromARGB(255, 255, 255, 255);

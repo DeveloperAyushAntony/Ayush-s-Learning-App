@@ -9,7 +9,7 @@ import 'package:awoke_learning_app/features/mainpage/widgets/drawer_menu_button.
 import 'package:awoke_learning_app/features/mainpage/widgets/green_gradient_widget.dart';
 import 'package:awoke_learning_app/features/mainpage/widgets/home_welcome_text.dart';
 import 'package:awoke_learning_app/features/mainpage/widgets/mentor_image.dart';
-import 'package:flutter/widgets.dart';
+
 
 class HomeUiScreen extends StatelessWidget {
   const HomeUiScreen({
@@ -122,7 +122,7 @@ class HomeUiScreen extends StatelessWidget {
               HomeCoursegradientCard(
                 coursetitle: "For KG's",
                 subtitle: "",
-                imageUrl: "assets/images/kg.png",
+                imageUrl: "assets/images/kg.webp",
                 gradientcolors: [
                   Color(0xff2CB20A),
                   Color(0xff134C04),

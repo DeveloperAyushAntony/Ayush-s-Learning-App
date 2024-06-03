@@ -22,7 +22,7 @@ dependencies:
     sdk: flutter
   flutter_native_splash: ^2.4.0
   flutter_otp_text_field: ^1.1.3+2
-  go_router: ^13.2.4
+  flutter_svg: ^2.0.10+1
   google_fonts: ^6.2.1
   lottie: ^3.1.0
   provider: ^6.1.2
@@ -48,11 +48,16 @@ flutter:
     - assets\images\menu.png
     - assets\images\artistpng.png
     - assets\images\mentorplaceholder.png
-    - assets\images\kg.png
+    - assets\images\kg.webp
     - assets\images\kids.png
     - assets\images\schoolteens.png
     - assets\images\grownups.png
     - assets\images\veterans.png
+    - assets\images\user.svg
+    - assets\images\classroom.svg
+    - assets\images\school-material.svg
+    - assets\images\drawer.svg
+    - assets\images\love.svg
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

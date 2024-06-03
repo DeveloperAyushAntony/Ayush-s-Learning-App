@@ -1,5 +1,5 @@
 import 'package:awoke_learning_app/core/utils/app_styles.dart';
-import 'package:awoke_learning_app/features/drawer/presentation/drawe_ui.dart';
+import 'package:awoke_learning_app/features/drawer/presentation/drawer_ui.dart';
 
 import 'package:awoke_learning_app/features/gemini/presentation/screen_gemini.dart';
 import 'package:awoke_learning_app/features/mainpage/presentation/main_page.dart';

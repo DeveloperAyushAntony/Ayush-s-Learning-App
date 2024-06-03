@@ -33,6 +33,11 @@ final TextStyle buttonText = GoogleFonts.roboto(
   fontWeight: FontWeight.bold,
   color: const Color.fromARGB(255, 0, 0, 0),
 );
+final TextStyle redbuttonText = GoogleFonts.roboto(
+  fontSize: 19.0,
+  fontWeight: FontWeight.bold,
+  color: const Color.fromARGB(255, 255, 0, 0),
+);
 final TextStyle buttonText2 = GoogleFonts.roboto(
   fontSize: 19.0,
   fontWeight: FontWeight.bold,
@@ -81,5 +86,13 @@ final TextStyle homeGreadientext = GoogleFonts.mavenPro(
 );
 final TextStyle subText = GoogleFonts.karla(
   fontSize: 16.0,
+  color: const Color.fromARGB(255, 255, 255, 255),
+);
+final TextStyle drawerText = GoogleFonts.karla(
+  fontSize: 22.0,
+  color: const Color.fromARGB(255, 255, 255, 255),
+);
+final TextStyle drawerHeadText = GoogleFonts.lusitana(
+  fontSize: 34.0,
   color: const Color.fromARGB(255, 255, 255, 255),
 );
