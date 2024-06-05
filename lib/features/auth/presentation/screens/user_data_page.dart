@@ -1,7 +1,7 @@
 import 'package:awoke_learning_app/core/utils/app_styles.dart';
 import 'package:awoke_learning_app/core/utils/constants.dart';
 import 'package:awoke_learning_app/core/utils/fonts.dart';
-import 'package:awoke_learning_app/core/widgets/top_blue_gradientcard.dart';
+import 'package:awoke_learning_app/core/widgets/top_gradientcard.dart';
 import 'package:awoke_learning_app/features/auth/presentation/widgets/elevated_custombutton.dart';
 import 'package:awoke_learning_app/features/home/presentation/screen_homepage.dart';
 
@@ -22,7 +22,16 @@ class UserDataPage extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: Stack(
                 children: [
-                  const GradientBlueCard(),
+                  const GradientCard(
+                       customalighnmentbegin: Alignment.bottomRight,
+                customalighnmentend: Alignment.topLeft,
+                    customheight: 280,
+                    customwidth: 800,
+                    gradientcolors: [
+                      Color(0xff153B9C),
+                      Color(0xff1C4FD1),
+                    ],
+                  ),
                   kHeight120,
                   Padding(
                     padding: const EdgeInsets.only(top: 220),

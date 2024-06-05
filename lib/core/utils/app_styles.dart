@@ -6,3 +6,4 @@ const kRedColor = Color.fromARGB(255, 204, 33, 21);
 const kYellowcolor = Color.fromARGB(255, 255, 217, 0);
 const kPurpleColor = Colors.purple;
 const kWhiteColor = Color.fromARGB(255, 255, 255, 255);
+const klightbluegrey = Color.fromARGB(255, 91, 114, 151);

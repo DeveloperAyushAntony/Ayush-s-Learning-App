@@ -1,3 +1,4 @@
+import 'package:awoke_learning_app/core/utils/app_styles.dart';
 import 'package:awoke_learning_app/core/utils/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -14,14 +15,21 @@ class DrawerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      onTap: click,
-      leading: SizedBox(
-        height: 45,
-        width: 45,
-        child: SvgPicture.asset(svgpath),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8),
+      child: Card(
+        elevation: 6,
+        color: klightbluegrey,
+        child: ListTile(
+          onTap: click,
+          leading: SizedBox(
+            height: 45,
+            width: 45,
+            child: SvgPicture.asset(svgpath),
+          ),
+          title: Text(itemname, style: drawerText),
+        ),
       ),
-      title: Text(itemname, style: drawerText),
     );
   }
 }

@@ -24,7 +24,7 @@ class ScreenHome extends StatelessWidget {
         scaffoldKey: scaffoldKey,
       ),
       const ScreenMockClass(),
-      const ScreenGemini(),
+      ScreenGemini(),
       const ScreenUserPage()
     ];
     return SafeArea(
@@ -54,9 +54,9 @@ class ScreenHome extends StatelessWidget {
                     selectedColor: kRedColor,
                   ),
                   SalomonBottomBarItem(
-                    icon: const Icon(Icons.search),
-                    title: const Text("Search"),
-                    selectedColor: Colors.orange,
+                    icon: const Icon(Icons.chat),
+                    title: const Text("Gemini Ai"),
+                    selectedColor: const Color(0xff1C368E),
                   ),
                   SalomonBottomBarItem(
                     icon: const Icon(Icons.person),

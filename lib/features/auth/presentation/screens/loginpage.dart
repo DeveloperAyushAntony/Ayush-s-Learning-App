@@ -1,6 +1,6 @@
 import 'package:awoke_learning_app/core/utils/constants.dart';
 import 'package:awoke_learning_app/core/utils/fonts.dart';
-import 'package:awoke_learning_app/core/widgets/top_blue_gradientcard.dart';
+import 'package:awoke_learning_app/core/widgets/top_gradientcard.dart';
 import 'package:awoke_learning_app/features/auth/presentation/widgets/back_button.dart';
 import 'package:awoke_learning_app/features/auth/presentation/widgets/elevated_custombutton.dart';
 import 'package:awoke_learning_app/features/auth/presentation/widgets/phonenumber_textfiormfield.dart';
@@ -16,7 +16,16 @@ class Loginpage extends StatelessWidget {
         body: SingleChildScrollView(
           child: Stack(
             children: [
-              const GradientBlueCard(),
+              const GradientCard(
+                customalighnmentbegin: Alignment.bottomRight,
+                customalighnmentend: Alignment.topLeft,
+                customheight: 280,
+                customwidth: 800,
+                gradientcolors: [
+                  Color(0xff153B9C),
+                  Color(0xff1C4FD1),
+                ],
+              ),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
