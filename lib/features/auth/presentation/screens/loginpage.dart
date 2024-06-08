@@ -131,7 +131,7 @@ class LoginTextOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "We glad that you are here!",
+      "We are glad that you are here!",
       style: appTexttitle,
     );
   }

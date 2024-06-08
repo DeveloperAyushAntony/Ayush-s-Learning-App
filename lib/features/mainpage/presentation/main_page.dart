@@ -10,7 +10,6 @@ import 'package:awoke_learning_app/features/mainpage/widgets/green_gradient_widg
 import 'package:awoke_learning_app/features/mainpage/widgets/home_welcome_text.dart';
 import 'package:awoke_learning_app/features/mainpage/widgets/mentor_image.dart';
 
-
 class HomeUiScreen extends StatelessWidget {
   const HomeUiScreen({
     super.key,
@@ -25,24 +24,28 @@ class HomeUiScreen extends StatelessWidget {
       child: Column(
         children: [
           kHeight10,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                children: [
-                  kHeight30,
-                  DrawerMenuButton(scaffoldKey: scaffoldKey),
-                ],
-              ),
-              kWidth30,
-              const HomeWelcomeText(),
-              kWidth30,
-              const Awokelogo(),
-            ],
+          Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                kWidth10,
+                DrawerMenuButton(scaffoldKey: scaffoldKey),
+                kWidth40,
+                const Column(
+                  children: [HomeWelcomeText(), kHeight30],
+                ),
+                kWidth40,
+                const Awokelogo(
+                  logoheight: 75,
+                  logowidth: 69,
+                ),
+                kWidth10
+              ],
+            ),
           ),
-          kHeight80,
+          kHeight30,
           const GreenGradientWidget(
-            headtext: "your mentors",
+            headtext: "Your Mentors",
           ),
           kHeight35,
           const Row(

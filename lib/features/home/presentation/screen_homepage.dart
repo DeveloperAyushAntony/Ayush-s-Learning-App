@@ -6,7 +6,7 @@ import 'package:awoke_learning_app/features/mainpage/presentation/main_page.dart
 
 import 'package:awoke_learning_app/features/home/providers/bottomnav_index_provider.dart';
 import 'package:awoke_learning_app/features/mockclasses/presentation/screen_mockclass.dart';
-import 'package:awoke_learning_app/features/users/presentation/screen_userpage.dart';
+import 'package:awoke_learning_app/features/primeusers/presentation/screen_userpage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -25,7 +25,7 @@ class ScreenHome extends StatelessWidget {
       ),
       const ScreenMockClass(),
       ScreenGemini(),
-      const ScreenUserPage()
+      const ScreenPrimeUserPage()
     ];
     return SafeArea(
       child: Scaffold(

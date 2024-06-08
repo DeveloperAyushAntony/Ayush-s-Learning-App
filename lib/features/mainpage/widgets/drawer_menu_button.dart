@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class DrawerMenuButton extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -15,13 +16,12 @@ class DrawerMenuButton extends StatelessWidget {
         scaffoldKey.currentState?.openDrawer();
       },
       child: SizedBox(
-        height: 50,
-        width: 40,
-        child: Image.asset(
-          "assets/images/menu.png",
-          fit: BoxFit.contain,
-        ),
-      ),
+          height: 50,
+          width: 40,
+          child: SvgPicture.asset(
+            "assets/images/menu.svg",
+            fit: BoxFit.contain,
+          )),
     );
   }
 }

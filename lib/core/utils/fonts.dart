@@ -1,3 +1,4 @@
+import 'package:awoke_learning_app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -59,6 +60,11 @@ final TextStyle appText2 = GoogleFonts.lusitana(
   fontWeight: FontWeight.bold,
   color: const Color.fromARGB(255, 0, 0, 0),
 );
+final TextStyle appText3 = GoogleFonts.lusitana(
+  fontSize: 17.0,
+  fontWeight: FontWeight.bold,
+  color: const Color.fromARGB(255, 255, 255, 255),
+);
 final TextStyle appotptext = GoogleFonts.montserrat(
   fontSize: 17.0,
   fontWeight: FontWeight.bold,
@@ -96,3 +102,5 @@ final TextStyle drawerHeadText = GoogleFonts.lusitana(
   fontSize: 34.0,
   color: const Color.fromARGB(255, 255, 255, 255),
 );
+final TextStyle withustext = GoogleFonts.mavenPro(
+    fontSize: 24.0, color: kViolet, fontWeight: FontWeight.bold);
