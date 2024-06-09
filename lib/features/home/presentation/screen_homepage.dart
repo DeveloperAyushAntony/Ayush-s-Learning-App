@@ -1,10 +1,8 @@
 import 'package:awoke_learning_app/core/utils/app_styles.dart';
 import 'package:awoke_learning_app/features/drawer/presentation/drawer_ui.dart';
-
 import 'package:awoke_learning_app/features/gemini/presentation/screen_gemini.dart';
-import 'package:awoke_learning_app/features/mainpage/presentation/main_page.dart';
-
 import 'package:awoke_learning_app/features/home/providers/bottomnav_index_provider.dart';
+import 'package:awoke_learning_app/features/mainpage/presentation/main_page.dart';
 import 'package:awoke_learning_app/features/mockclasses/presentation/screen_mockclass.dart';
 import 'package:awoke_learning_app/features/primeusers/presentation/screen_userpage.dart';
 import 'package:flutter/material.dart';
@@ -17,16 +15,16 @@ class ScreenHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-    final screenIndexprovider = Provider.of<BottomNavIndexProvider>(context);
-    int currentScreenIndex = screenIndexprovider.fetchCurrentScreenIndex;
-    final List<dynamic> screens = [
-      HomeUiScreen(
-        scaffoldKey: scaffoldKey,
-      ),
+    final screenIndexProvider = Provider.of<BottomNavIndexProvider>(context);
+    int currentScreenIndex = screenIndexProvider.fetchCurrentScreenIndex;
+
+    final List<Widget> screens = [
+      HomeUiScreen(scaffoldKey: scaffoldKey),
       const ScreenMockClass(),
       ScreenGemini(),
-      const ScreenPrimeUserPage()
+      const ScreenPrimeUserPage(),
     ];
+
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
@@ -41,7 +39,7 @@ class ScreenHome extends StatelessWidget {
               ),
               child: SalomonBottomBar(
                 currentIndex: currentScreenIndex,
-                onTap: (value) => screenIndexprovider.updateScreenIndex(value),
+                onTap: (index) => screenIndexProvider.updateScreenIndex(index),
                 items: [
                   SalomonBottomBarItem(
                     icon: const Icon(Icons.home),
@@ -50,7 +48,7 @@ class ScreenHome extends StatelessWidget {
                   ),
                   SalomonBottomBarItem(
                     icon: const Icon(Icons.video_library),
-                    title: const Text("Likes"),
+                    title: const Text("Mock Class"),
                     selectedColor: kRedColor,
                   ),
                   SalomonBottomBarItem(
@@ -68,7 +66,10 @@ class ScreenHome extends StatelessWidget {
             ),
           ),
         ),
-        body: screens[currentScreenIndex],
+        body: IndexedStack(
+          index: currentScreenIndex,
+          children: screens,
+        ),
         drawer: const DrawerPageUi(),
       ),
     );

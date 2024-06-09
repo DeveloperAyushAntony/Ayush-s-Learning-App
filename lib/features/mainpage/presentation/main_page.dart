@@ -9,6 +9,7 @@ import 'package:awoke_learning_app/features/mainpage/widgets/drawer_menu_button.
 import 'package:awoke_learning_app/features/mainpage/widgets/green_gradient_widget.dart';
 import 'package:awoke_learning_app/features/mainpage/widgets/home_welcome_text.dart';
 import 'package:awoke_learning_app/features/mainpage/widgets/mentor_image.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeUiScreen extends StatelessWidget {
   const HomeUiScreen({
@@ -32,7 +33,10 @@ class HomeUiScreen extends StatelessWidget {
                 DrawerMenuButton(scaffoldKey: scaffoldKey),
                 kWidth40,
                 const Column(
-                  children: [HomeWelcomeText(), kHeight30],
+                  children: [
+                    HomeWelcomeText(),
+                    kHeight30,
+                  ],
                 ),
                 kWidth40,
                 const Awokelogo(
@@ -52,12 +56,12 @@ class HomeUiScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               MentorImageWidget(
-                imagePath: "assets/images/artistpng.png",
+                imagePath: "assets/images/mentor.svg",
               ),
               kWidth55,
               kWidth20,
               MentorImageWidget(
-                imagePath: "assets/images/artistpng.png",
+                imagePath: "assets/images/mentor.svg",
               )
             ],
           ),
@@ -72,7 +76,7 @@ class HomeUiScreen extends StatelessWidget {
                 aspectRatio: 2.0,
                 initialPage: 0,
                 autoPlayCurve: Curves.easeIn,
-                autoPlayAnimationDuration: const Duration(milliseconds: 500)),
+                autoPlayAnimationDuration: const Duration(milliseconds: 300)),
             items: [
               Container(
                 height: 120,
@@ -125,7 +129,7 @@ class HomeUiScreen extends StatelessWidget {
               HomeCoursegradientCard(
                 coursetitle: "For KG's",
                 subtitle: "",
-                imageUrl: "assets/images/kg.webp",
+                imageUrl: "assets/images/kg.svg",
                 gradientcolors: [
                   Color(0xff2CB20A),
                   Color(0xff134C04),
@@ -134,7 +138,7 @@ class HomeUiScreen extends StatelessWidget {
               HomeCoursegradientCard(
                 coursetitle: "For Kids",
                 subtitle: "(class 1  to  6 )",
-                imageUrl: "assets/images/kids.png",
+                imageUrl: "assets/images/kids.svg",
                 gradientcolors: [
                   Color(0xff0AA8B2),
                   Color(0xff04484C),
@@ -149,7 +153,7 @@ class HomeUiScreen extends StatelessWidget {
               HomeCoursegradientCard(
                 coursetitle: "          For \nSchool Teens",
                 subtitle: " (class 7 to 12 )",
-                imageUrl: "assets/images/schoolteens.png",
+                imageUrl: "assets/images/schoolteens.svg",
                 gradientcolors: [
                   Color(0xffFD0514),
                   Color(0xff97030C),
@@ -158,7 +162,7 @@ class HomeUiScreen extends StatelessWidget {
               HomeCoursegradientCard(
                 coursetitle: "          For\n Grown-ups",
                 subtitle: "(Age 18 to 40 )",
-                imageUrl: "assets/images/grownups.png",
+                imageUrl: "assets/images/grownups.svg",
                 gradientcolors: [
                   Color(0xff8E17D7),
                   Color(0xff4A0C71),
@@ -173,7 +177,7 @@ class HomeUiScreen extends StatelessWidget {
               HomeCoursegradientCard(
                 coursetitle: "      For \nVeterans",
                 subtitle: " (Age 40+ )",
-                imageUrl: "assets/images/veterans.png",
+                imageUrl: "assets/images/veterans.svg",
                 gradientcolors: [
                   Color(0xffFD8B05),
                   Color(0xff844306),
@@ -226,13 +230,12 @@ class HomeCoursegradientCard extends StatelessWidget {
           Card(
             color: Colors.white.withOpacity(0.7),
             child: SizedBox(
-              width: 140,
-              height: 130,
-              child: Image.asset(
-                imageUrl,
-                fit: BoxFit.contain,
-              ),
-            ),
+                width: 140,
+                height: 130,
+                child: SvgPicture.asset(
+                  imageUrl,
+                  fit: BoxFit.contain,
+                )),
           ),
           kHeight10,
           Text(

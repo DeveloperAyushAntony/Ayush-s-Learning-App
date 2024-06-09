@@ -1,6 +1,6 @@
 import 'package:awoke_learning_app/core/utils/constants.dart';
 import 'package:awoke_learning_app/core/utils/fonts.dart';
-import 'package:awoke_learning_app/features/auth/presentation/screens/loginpage.dart';
+
 import 'package:awoke_learning_app/features/mainpage/widgets/awoke_logo.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +11,7 @@ class ScreenPrimeUserPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -37,65 +38,102 @@ class ScreenPrimeUserPage extends StatelessWidget {
               ),
               kHeight10,
               const AccountDetailWidget(),
-              Container(
-                height: 35,
-                width: 300,
-                decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [
-                        Color(0xffB1AC20),
-                        Color(0xffFFF500),
-                      ],
-                    ),
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.elliptical(150, 80),
-                      bottomRight: Radius.elliptical(150, 80),
-                      topLeft: Radius.elliptical(150, 80),
-                      bottomLeft: Radius.elliptical(150, 80),
-                    )),
-                child: Center(
-                  child: Text(
-                    "you are now a premium user",
-                    style: appText,
-                  ),
-                ),
-              ),
+              const PremiumUserWidget(),
               kHeight25,
-              Text(
-                "You are eligible for priority support",
-                style: appText2,
-              ),
-              kHeight10,
-              Text(
-                "For assistance contact:",
-                style: subtext,
-              ),
-              kHeight10,
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  gradient: const LinearGradient(
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    colors: [
-                      Color(0xff134C04),
-                      Color(0xff2CB20A),
-                    ],
-                  ),
-                ),
-                height: 32,
-                width: 230,
-                child: Center(
-                  child: Text(
-                    "support@awokelearning.com",
-                    style: appText3,
-                  ),
-                ),
-              )
+              const PrioritySupportDetailWidget(),
+              const AwokeMailWidget()
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class AwokeMailWidget extends StatelessWidget {
+  const AwokeMailWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        gradient: const LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [
+            Color(0xff134C04),
+            Color(0xff2CB20A),
+          ],
+        ),
+      ),
+      height: 32,
+      width: 230,
+      child: Center(
+        child: Text(
+          "support@awokelearning.com",
+          style: appText3,
+        ),
+      ),
+    );
+  }
+}
+
+class PrioritySupportDetailWidget extends StatelessWidget {
+  const PrioritySupportDetailWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          "You are eligible for priority support",
+          style: appText2,
+        ),
+        kHeight10,
+        Text(
+          "For assistance contact:",
+          style: subtext,
+        ),
+        kHeight10,
+      ],
+    );
+  }
+}
+
+class PremiumUserWidget extends StatelessWidget {
+  const PremiumUserWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 35,
+      width: 300,
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+            colors: [
+              Color(0xffB1AC20),
+              Color(0xffFFF500),
+            ],
+          ),
+          borderRadius: BorderRadius.only(
+            topRight: Radius.elliptical(150, 80),
+            bottomRight: Radius.elliptical(150, 80),
+            topLeft: Radius.elliptical(150, 80),
+            bottomLeft: Radius.elliptical(150, 80),
+          )),
+      child: Center(
+        child: Text(
+          "you are now a premium user",
+          style: appText,
         ),
       ),
     );

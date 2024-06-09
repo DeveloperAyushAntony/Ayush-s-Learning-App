@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class MentorImageWidget extends StatelessWidget {
   final String imagePath;
@@ -14,13 +15,7 @@ class MentorImageWidget extends StatelessWidget {
       height: 95,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(95 / 2),
-        child: FadeInImage(
-          placeholder: const AssetImage("assets/images/mentorplaceholder.png"),
-          fadeInDuration: const Duration(milliseconds: 200),
-          image: AssetImage(imagePath),
-          fit: BoxFit.contain,
-        ),
-      ),
+        child: SvgPicture.asset(imagePath))
     );
   }
 }

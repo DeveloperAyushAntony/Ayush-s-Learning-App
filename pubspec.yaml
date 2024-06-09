@@ -43,17 +43,15 @@ flutter:
     - assets\json\animation3.json
     - assets\json\accounts.json
     - assets\images\awoke hd.svg
-    - assets\images\central.png
     - assets\images\google.png
     - assets\images\happy.png
-
-    - assets\images\artistpng.png
+    - assets\images\mentor.svg
     - assets\images\mentorplaceholder.png
-    - assets\images\kg.webp
-    - assets\images\kids.png
-    - assets\images\schoolteens.png
-    - assets\images\grownups.png
-    - assets\images\veterans.png
+    - assets\images\kg.svg
+    - assets\images\kids.svg
+    - assets\images\schoolteens.svg
+    - assets\images\grownups.svg
+    - assets\images\veterans.svg
     - assets\images\user.svg
     - assets\images\classroom.svg
     - assets\images\school-material.svg
@@ -61,6 +59,8 @@ flutter:
     - assets\images\love.svg
     - assets\images\centrallogin.svg
     - assets\images\menu.svg
+    
+   
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
