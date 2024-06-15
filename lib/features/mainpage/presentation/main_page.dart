@@ -215,14 +215,6 @@ class HomeCoursegradientCard extends StatelessWidget {
             colors: gradientcolors,
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter),
-        // boxShadow: const [
-        //   BoxShadow(
-        //     color: Color.fromARGB(255, 12, 12, 12), // Adjust color as needed
-        //     blurRadius: 2.0, // Adjust blur radius for shadow effect
-        //     spreadRadius: 1.0, // Adjust spread radius for shadow intensity
-        //     offset: Offset(0.0, 2.0), // Adjust offset for shadow position
-        //   ),
-        // ],
       ),
       child: Column(
         children: [

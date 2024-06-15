@@ -1,7 +1,7 @@
 import 'package:awoke_learning_app/core/utils/app_styles.dart';
 import 'package:awoke_learning_app/features/drawer/presentation/drawer_ui.dart';
 import 'package:awoke_learning_app/features/gemini/presentation/screen_gemini.dart';
-import 'package:awoke_learning_app/features/home/providers/bottomnav_index_provider.dart';
+import 'package:awoke_learning_app/features/bottomnavigation/providers/bottomnav_index_provider.dart';
 import 'package:awoke_learning_app/features/mainpage/presentation/main_page.dart';
 import 'package:awoke_learning_app/features/mockclasses/presentation/screen_mockclass.dart';
 import 'package:awoke_learning_app/features/primeusers/presentation/screen_userpage.dart';
@@ -38,6 +38,8 @@ class ScreenHome extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
               ),
               child: SalomonBottomBar(
+                curve: Curves.easeIn,
+                duration: const Duration(milliseconds: 50),
                 currentIndex: currentScreenIndex,
                 onTap: (index) => screenIndexProvider.updateScreenIndex(index),
                 items: [

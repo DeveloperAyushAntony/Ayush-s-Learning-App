@@ -1,3 +1,4 @@
+import 'package:awoke_learning_app/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -69,22 +70,32 @@ class AuthPage extends StatelessWidget {
               ),
             ),
             const Positioned(
-              top: 485,
-              bottom: 143,
+              top: 490,
+              bottom: 120,
               left: 54,
               right: 55,
-              child: CustomSigninButton(),
+              child: Column(
+                children: [
+                  CustomSigninButton(
+                    buttontext: AppStrings.googlebutton,
+                  ),
+                  kHeight5,
+                  CustomSigninButton(
+                    buttontext: AppStrings.whatsappbutton,
+                  ),
+                ],
+              ),
             ), //Custom sign in widget ****from****custom_signinbutton.dart
             const Positioned(
-              top: 515,
+              top: 520,
               left: 90,
-              bottom: 40,
+              bottom: -12,
               child: OrWidget(),
 
               ///custom or widget ****from***or_widget.dart
             ),
             Positioned(
-              top: 655,
+              top: 667,
               left: 95,
               child: Text(
                 AppStrings.accountQuestion, //account widget

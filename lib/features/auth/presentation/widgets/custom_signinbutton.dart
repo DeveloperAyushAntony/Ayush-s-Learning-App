@@ -1,10 +1,10 @@
-import 'package:awoke_learning_app/core/utils/app_strings.dart';
+
 import 'package:awoke_learning_app/core/utils/fonts.dart';
 import 'package:flutter/material.dart';
 
 class CustomSigninButton extends StatelessWidget {
-  const CustomSigninButton({super.key});
-
+  const CustomSigninButton({super.key, required this.buttontext});
+final String buttontext;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,7 +26,7 @@ class CustomSigninButton extends StatelessWidget {
                 width: 30,
               ),
               title: Text(
-                AppStrings.googlebutton,
+               buttontext,
                 style: buttonText,
               ),
             ),

@@ -3,8 +3,8 @@ import 'package:awoke_learning_app/features/auth/presentation/screens/loginpage.
 import 'package:awoke_learning_app/features/auth/presentation/screens/otp_page.dart';
 import 'package:awoke_learning_app/features/auth/presentation/screens/user_data_page.dart';
 
-import 'package:awoke_learning_app/features/home/presentation/screen_homepage.dart';
-import 'package:awoke_learning_app/features/home/providers/bottomnav_index_provider.dart';
+import 'package:awoke_learning_app/features/bottomnavigation/presentation/screen_homepage.dart';
+import 'package:awoke_learning_app/features/bottomnavigation/providers/bottomnav_index_provider.dart';
 import 'package:awoke_learning_app/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
