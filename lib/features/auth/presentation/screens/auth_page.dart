@@ -78,10 +78,16 @@ class AuthPage extends StatelessWidget {
                 children: [
                   CustomSigninButton(
                     buttontext: AppStrings.googlebutton,
+                    asset: "assets/images/google.svg",
+                    height: 34,
+                    width: 30,
                   ),
                   kHeight5,
                   CustomSigninButton(
                     buttontext: AppStrings.whatsappbutton,
+                    asset: "assets/images/whatsapp.svg",
+                    height: 41,
+                    width: 30,
                   ),
                 ],
               ),

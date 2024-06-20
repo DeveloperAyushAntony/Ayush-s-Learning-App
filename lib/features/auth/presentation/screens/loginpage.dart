@@ -17,6 +17,8 @@ class Loginpage extends StatelessWidget {
           child: Stack(
             children: [
               const GradientCard(
+                  bottomleftval: Radius.circular(40),
+         bottomrightval: Radius.circular(40),
                 customalighnmentbegin: Alignment.bottomRight,
                 customalighnmentend: Alignment.topLeft,
                 customheight: 280,

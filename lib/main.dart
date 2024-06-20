@@ -5,6 +5,7 @@ import 'package:awoke_learning_app/features/auth/presentation/screens/user_data_
 
 import 'package:awoke_learning_app/features/bottomnavigation/presentation/screen_homepage.dart';
 import 'package:awoke_learning_app/features/bottomnavigation/providers/bottomnav_index_provider.dart';
+import 'package:awoke_learning_app/features/courses/kg/presentation/kg_page.dart';
 import 'package:awoke_learning_app/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
           '/otppage': (context) => const OtpPage(),
           '/userdatapage': (context) => const UserDataPage(),
           '/homepage': (context) => const ScreenHome(),
+          '/kgpage': (context) => const KgPage(),
         },
       ),
     );

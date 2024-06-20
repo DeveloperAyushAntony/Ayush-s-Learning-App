@@ -2,6 +2,13 @@ import 'package:awoke_learning_app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class GradientCard extends StatelessWidget {
+  final List<Color> gradientcolors;
+  final double customwidth;
+  final double customheight;
+  final Alignment customalighnmentbegin;
+  final Alignment customalighnmentend;
+  final Radius bottomleftval;
+  final Radius bottomrightval;
   const GradientCard({
     super.key,
     required this.gradientcolors,
@@ -9,12 +16,9 @@ class GradientCard extends StatelessWidget {
     required this.customheight,
     required this.customalighnmentbegin,
     required this.customalighnmentend,
+    required this.bottomleftval,
+    required this.bottomrightval,
   });
-  final List<Color> gradientcolors;
-  final double customwidth;
-  final double customheight;
-  final Alignment customalighnmentbegin;
-  final Alignment customalighnmentend;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +26,11 @@ class GradientCard extends StatelessWidget {
       width: customwidth,
       height: customheight,
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(40),
-          bottomRight: Radius.circular(40),
+        borderRadius: BorderRadius.only(
+          bottomLeft: bottomleftval,
+          bottomRight: bottomrightval,
+          // bottomLeft: Radius.circular(40),
+          // bottomRight: Radius.circular(40),
         ),
         gradient: LinearGradient(
             begin: customalighnmentbegin,

@@ -1,10 +1,18 @@
-
 import 'package:awoke_learning_app/core/utils/fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomSigninButton extends StatelessWidget {
-  const CustomSigninButton({super.key, required this.buttontext});
-final String buttontext;
+  const CustomSigninButton(
+      {super.key,
+      required this.buttontext,
+      required this.asset,
+      required this.height,
+      required this.width});
+  final String buttontext;
+  final String asset;
+  final double height;
+  final double width;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,13 +28,13 @@ final String buttontext;
             borderRadius: BorderRadius.circular(60),
             onTap: () {},
             child: ListTile(
-              leading: Image.asset(
-                "assets/images/google.png",
-                height: 34,
-                width: 30,
+              leading: SvgPicture.asset(
+                asset,
+                height: height,
+                width: width,
               ),
               title: Text(
-               buttontext,
+                buttontext,
                 style: buttonText,
               ),
             ),

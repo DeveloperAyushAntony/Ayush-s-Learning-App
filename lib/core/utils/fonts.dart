@@ -90,6 +90,11 @@ final TextStyle homeGreadientext = GoogleFonts.mavenPro(
   fontWeight: FontWeight.bold,
   color: const Color.fromARGB(255, 0, 0, 0),
 );
+final TextStyle headcardtext = GoogleFonts.mavenPro(
+  fontSize: 25.0,
+  fontWeight: FontWeight.bold,
+  color: const Color.fromARGB(255, 255, 255, 255),
+);
 final TextStyle subText = GoogleFonts.karla(
   fontSize: 16.0,
   color: const Color.fromARGB(255, 255, 255, 255),

@@ -42,8 +42,10 @@ flutter:
     - assets\json\animation2.json
     - assets\json\animation3.json
     - assets\json\accounts.json
+    - assets\json\kg1.json
+
     - assets\images\awoke hd.svg
-    - assets\images\google.png
+    - assets\images\google.svg
     - assets\images\happy.png
     - assets\images\mentor.svg
     - assets\images\mentorplaceholder.png

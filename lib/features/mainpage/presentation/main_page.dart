@@ -1,6 +1,5 @@
 import 'package:awoke_learning_app/core/utils/fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-
 import 'package:flutter/material.dart';
 import 'package:awoke_learning_app/core/utils/app_styles.dart';
 import 'package:awoke_learning_app/core/utils/constants.dart';
@@ -18,7 +17,6 @@ class HomeUiScreen extends StatelessWidget {
   });
 
   final GlobalKey<ScaffoldState> scaffoldKey;
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -62,7 +60,7 @@ class HomeUiScreen extends StatelessWidget {
               kWidth20,
               MentorImageWidget(
                 imagePath: "assets/images/mentor.svg",
-              )
+              ),
             ],
           ),
           kHeight15,
@@ -123,65 +121,70 @@ class HomeUiScreen extends StatelessWidget {
             headtext: "Courses",
           ),
           kHeight30,
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               HomeCoursegradientCard(
                 coursetitle: "For KG's",
                 subtitle: "",
                 imageUrl: "assets/images/kg.svg",
-                gradientcolors: [
+                gradientcolors: const [
                   Color(0xff2CB20A),
                   Color(0xff134C04),
                 ],
+                route: () => Navigator.of(context).pushNamed('/kgpage'),
               ),
               HomeCoursegradientCard(
                 coursetitle: "For Kids",
                 subtitle: "(class 1  to  6 )",
                 imageUrl: "assets/images/kids.svg",
-                gradientcolors: [
+                gradientcolors: const [
                   Color(0xff0AA8B2),
                   Color(0xff04484C),
                 ],
+                route: () {},
               ),
             ],
           ),
           kHeight30,
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               HomeCoursegradientCard(
                 coursetitle: "          For \nSchool Teens",
                 subtitle: " (class 7 to 12 )",
                 imageUrl: "assets/images/schoolteens.svg",
-                gradientcolors: [
+                gradientcolors: const [
                   Color(0xffFD0514),
                   Color(0xff97030C),
                 ],
+                route: () {},
               ),
               HomeCoursegradientCard(
                 coursetitle: "          For\n Grown-ups",
                 subtitle: "(Age 18 to 40 )",
                 imageUrl: "assets/images/grownups.svg",
-                gradientcolors: [
+                gradientcolors: const [
                   Color(0xff8E17D7),
                   Color(0xff4A0C71),
                 ],
+                route: () {},
               ),
             ],
           ),
           kHeight30,
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               HomeCoursegradientCard(
                 coursetitle: "      For \nVeterans",
                 subtitle: " (Age 40+ )",
                 imageUrl: "assets/images/veterans.svg",
-                gradientcolors: [
+                gradientcolors: const [
                   Color(0xffFD8B05),
                   Color(0xff844306),
                 ],
+                route: () {},
               ),
             ],
           )
@@ -196,49 +199,64 @@ class HomeCoursegradientCard extends StatelessWidget {
   final String imageUrl;
   final String coursetitle;
   final String subtitle;
+  final VoidCallback route;
 
-  const HomeCoursegradientCard(
-      {super.key,
-      required this.gradientcolors,
-      required this.imageUrl,
-      required this.coursetitle,
-      required this.subtitle});
+  const HomeCoursegradientCard({
+    super.key,
+    required this.gradientcolors,
+    required this.imageUrl,
+    required this.coursetitle,
+    required this.subtitle,
+    required this.route,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 160,
-      height: 250,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        gradient: LinearGradient(
+    return Material(
+      color: Colors.transparent,
+      child: Ink(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          gradient: LinearGradient(
             colors: gradientcolors,
             begin: Alignment.topCenter,
-            end: Alignment.bottomCenter),
-      ),
-      child: Column(
-        children: [
-          kHeight15,
-          Card(
-            color: Colors.white.withOpacity(0.7),
-            child: SizedBox(
-                width: 140,
-                height: 130,
-                child: SvgPicture.asset(
-                  imageUrl,
-                  fit: BoxFit.contain,
-                )),
+            end: Alignment.bottomCenter,
           ),
-          kHeight10,
-          Text(
-            coursetitle,
-            style: appTexttitle,
+        ),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(20),
+          splashColor: kWhiteColor.withOpacity(0.5),
+          onTap: route,
+          child: SizedBox(
+            width: 160,
+            height: 250,
+            child: Column(
+              children: [
+                kHeight15,
+                Card(
+                  color: Colors.white.withOpacity(0.7),
+                  child: SizedBox(
+                    width: 140,
+                    height: 130,
+                    child: SvgPicture.asset(
+                      imageUrl,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+                kHeight10,
+                Text(
+                  coursetitle,
+                  style: appTexttitle,
+                ),
+                Text(
+                  subtitle,
+                  style: subText,
+                ),
+              ],
+            ),
           ),
-          Text(
-            subtitle,
-            style: subText,
-          )
-        ],
+        ),
       ),
     );
   }

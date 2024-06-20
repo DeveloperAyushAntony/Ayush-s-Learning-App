@@ -17,6 +17,8 @@ class ScreenMockClass extends StatelessWidget {
             Stack(
               children: [
                 const GradientCard(
+                  bottomleftval: Radius.circular(40),
+                  bottomrightval: Radius.circular(40),
                   customalighnmentbegin: Alignment.bottomCenter,
                   customalighnmentend: Alignment.topCenter,
                   customheight: 80,

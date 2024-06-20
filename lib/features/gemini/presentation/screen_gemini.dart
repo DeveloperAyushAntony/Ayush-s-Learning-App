@@ -18,6 +18,8 @@ class ScreenGemini extends StatelessWidget {
             Stack(
               children: [
                 const GradientCard(
+                       bottomleftval: Radius.circular(40),
+         bottomrightval: Radius.circular(40),
                   gradientcolors: [
                     Color(0xff30448C),
                     Color(0xff0D1326),
