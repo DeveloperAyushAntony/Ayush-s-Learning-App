@@ -142,7 +142,7 @@ class HomeUiScreen extends StatelessWidget {
                   Color(0xff0AA8B2),
                   Color(0xff04484C),
                 ],
-                route: () {},
+                route: () => Navigator.of(context).pushNamed('/kidspage'),
               ),
             ],
           ),

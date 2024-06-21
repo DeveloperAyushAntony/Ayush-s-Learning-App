@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 
 import 'package:lottie/lottie.dart';
 
-class KgPage extends StatelessWidget {
-  const KgPage({super.key});
+class KidsPage extends StatelessWidget {
+  const KidsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +25,8 @@ class KgPage extends StatelessWidget {
                       bottomleftval: Radius.zero,
                       bottomrightval: Radius.circular(40),
                       gradientcolors: [
-                        Color(0xff2CB20A),
-                        Color(0xff134C04),
+                        Color(0xff0AA8B2),
+                        Color(0xff04484C),
                       ],
                       customwidth: 300,
                       customheight: 200,
@@ -35,10 +35,10 @@ class KgPage extends StatelessWidget {
                   const Positioned(
                       left: 10, top: 20, child: CustomBackButton()),
                   Positioned(
-                    left: 90,
+                    left: 80,
                     top: 130,
                     child: Text(
-                      "Courses for KG",
+                      "Courses for KIDS",
                       style: headcardtext,
                     ),
                   ),
@@ -76,8 +76,8 @@ class HorizontallyScrollableCards extends StatelessWidget {
               title: 'Card 1',
               description: 'This is the first card.',
               colors: [
-                Color(0xff2CB20A),
-                Color(0xff134C04),
+                Color(0xff0AA8B2),
+                Color(0xff04484C),
               ],
               icon: Icons.star,
             ),
@@ -96,6 +96,15 @@ class HorizontallyScrollableCards extends StatelessWidget {
               colors: [
                 Color(0xff8E17D7),
                 Color(0xff4A0C71),
+              ],
+              icon: Icons.access_alarm,
+            ),
+            CardItem(
+              title: 'Card 3',
+              description: 'This is the third card.',
+              colors: [
+                Color(0xff2CB20A),
+                Color(0xff134C04),
               ],
               icon: Icons.access_alarm,
             ),
