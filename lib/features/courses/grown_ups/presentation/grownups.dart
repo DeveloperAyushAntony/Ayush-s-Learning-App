@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 
 import 'package:lottie/lottie.dart';
 
-class KidsPage extends StatelessWidget {
-  const KidsPage({super.key});
+class GrownupsPage extends StatelessWidget {
+  const GrownupsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,20 +25,20 @@ class KidsPage extends StatelessWidget {
                       bottomleftval: Radius.zero,
                       bottomrightval: Radius.circular(40),
                       gradientcolors: [
-                        Color(0xff0AA8B2),
-                        Color(0xff04484C),
+                        Color(0xff8E17D7),
+                        Color(0xff4A0C71),
                       ],
-                      customwidth: 300,
+                      customwidth: 330,
                       customheight: 200,
                       customalighnmentbegin: Alignment.topLeft,
                       customalighnmentend: Alignment.bottomRight),
                   const Positioned(
                       left: 10, top: 20, child: CustomBackButton()),
                   Positioned(
-                    left: 80,
+                    left: 20,
                     top: 130,
                     child: Text(
-                      "Courses for KIDS",
+                      "Courses for GrownUps",
                       style: headcardtext,
                     ),
                   ),
@@ -47,9 +47,11 @@ class KidsPage extends StatelessWidget {
             ],
           ),
           SizedBox(
-              height: 260,
-              width: 300,
-              child: Lottie.asset("assets/json/kids1.json", fit: BoxFit.cover)),
+            height: 230,
+            width: 230,
+            child:
+                Lottie.asset("assets/json/grownups1.json", fit: BoxFit.contain),
+          ),
           const GreenGradientWidget(headtext: "courses"),
           kHeight35,
           const HorizontallyScrollableCards(),
@@ -75,8 +77,8 @@ class HorizontallyScrollableCards extends StatelessWidget {
               title: 'Card 1',
               description: 'This is the first card.',
               colors: [
-                Color(0xff0AA8B2),
-                Color(0xff04484C),
+                Color(0xff8E17D7),
+                Color(0xff4A0C71),
               ],
               icon: Icons.star,
             ),
@@ -84,8 +86,8 @@ class HorizontallyScrollableCards extends StatelessWidget {
               title: 'Card 2',
               description: 'This is the second card.',
               colors: [
-                Color(0xffFD0514),
-                Color(0xff97030C),
+                Color(0xff2CB20A),
+                Color(0xff134C04),
               ],
               icon: Icons.favorite,
             ),
@@ -93,8 +95,8 @@ class HorizontallyScrollableCards extends StatelessWidget {
               title: 'Card 3',
               description: 'This is the third card.',
               colors: [
-                Color(0xff8E17D7),
-                Color(0xff4A0C71),
+                Color(0xffFD0514),
+                Color(0xff97030C),
               ],
               icon: Icons.access_alarm,
             ),
@@ -102,8 +104,8 @@ class HorizontallyScrollableCards extends StatelessWidget {
               title: 'Card 3',
               description: 'This is the third card.',
               colors: [
-                Color(0xff2CB20A),
-                Color(0xff134C04),
+                Color(0xff0AA8B2),
+                Color(0xff04484C),
               ],
               icon: Icons.access_alarm,
             ),

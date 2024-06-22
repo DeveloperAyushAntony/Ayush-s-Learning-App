@@ -43,7 +43,7 @@ flutter:
     - assets\json\animation3.json
     - assets\json\accounts.json
     - assets\json\kg1.json
-
+    - assets\json\kids1.json
     - assets\images\awoke hd.svg
     - assets\images\google.svg
     - assets\images\happy.png
@@ -62,6 +62,8 @@ flutter:
     - assets\images\centrallogin.svg
     - assets\images\menu.svg
     - assets\images\whatsapp.svg
+    - assets\json\grownups1.json
+   
     
    
   #   - images/a_dot_ham.jpeg

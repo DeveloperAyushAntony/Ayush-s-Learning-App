@@ -158,7 +158,8 @@ class HomeUiScreen extends StatelessWidget {
                   Color(0xffFD0514),
                   Color(0xff97030C),
                 ],
-                route: () {},
+                route: () =>
+                    Navigator.of(context).pushNamed('/schoolteenspage'),
               ),
               HomeCoursegradientCard(
                 coursetitle: "          For\n Grown-ups",
@@ -168,7 +169,7 @@ class HomeUiScreen extends StatelessWidget {
                   Color(0xff8E17D7),
                   Color(0xff4A0C71),
                 ],
-                route: () {},
+                route: () => Navigator.of(context).pushNamed('/grownupspage'),
               ),
             ],
           ),
@@ -184,7 +185,7 @@ class HomeUiScreen extends StatelessWidget {
                   Color(0xffFD8B05),
                   Color(0xff844306),
                 ],
-                route: () {},
+                route: () => Navigator.of(context).pushNamed('/veteranspage'),
               ),
             ],
           )
