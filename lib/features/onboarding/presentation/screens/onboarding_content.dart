@@ -58,7 +58,7 @@ class OnBoardingContent extends StatelessWidget {
               fontSize: 18,
               fontWeight: FontWeight.w300,
             ),
-            textAlign: TextAlign.left,
+            textAlign: TextAlign.center,
           )
         ],
       ),

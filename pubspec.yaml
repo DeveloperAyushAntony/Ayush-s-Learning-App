@@ -63,6 +63,8 @@ flutter:
     - assets\images\menu.svg
     - assets\images\whatsapp.svg
     - assets\json\grownups1.json
+    - assets\json\schoolteens1.json
+    - assets\json\veterans1.json
    
     
    

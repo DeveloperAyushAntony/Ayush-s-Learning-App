@@ -5,6 +5,7 @@ import 'package:awoke_learning_app/core/widgets/top_gradientcard.dart';
 import 'package:awoke_learning_app/features/auth/presentation/widgets/back_button.dart';
 import 'package:awoke_learning_app/features/mainpage/widgets/green_gradient_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:lottie/lottie.dart';
 
@@ -46,14 +47,16 @@ class GrownupsPage extends StatelessWidget {
               ),
             ],
           ),
+          kHeight20,
           SizedBox(
-            height: 230,
-            width: 230,
+            height: 250,
+            width: 350,
             child:
                 Lottie.asset("assets/json/grownups1.json", fit: BoxFit.contain),
           ),
+          kHeight20,
           const GreenGradientWidget(headtext: "courses"),
-          kHeight35,
+          kHeight25,
           const HorizontallyScrollableCards(),
         ],
       )),

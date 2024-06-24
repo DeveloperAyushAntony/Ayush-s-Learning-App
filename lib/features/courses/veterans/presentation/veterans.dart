@@ -49,7 +49,7 @@ class VeteransPage extends StatelessWidget {
           SizedBox(
             height: 250,
             width: 250,
-            child: Lottie.asset("assets/json/kg1.json"),
+            child: Lottie.asset("assets/json/veterans1.json"),
           ),
           const GreenGradientWidget(headtext: "courses"),
           kHeight35,

@@ -49,7 +49,7 @@ class SchoolTeensPage extends StatelessWidget {
           SizedBox(
             height: 250,
             width: 250,
-            child: Lottie.asset("assets/json/kg1.json"),
+            child: Lottie.asset("assets/json/schoolteens1.json"),
           ),
           const GreenGradientWidget(headtext: "courses"),
           kHeight35,
