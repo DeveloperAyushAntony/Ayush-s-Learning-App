@@ -65,6 +65,10 @@ flutter:
     - assets\json\grownups1.json
     - assets\json\schoolteens1.json
     - assets\json\veterans1.json
+    - assets\images\creativewriting.svg
+    - assets\images\publicspeaking.svg
+    - assets\images\personality.svg
+    - assets\images\comingsoon.svg
    
     
    

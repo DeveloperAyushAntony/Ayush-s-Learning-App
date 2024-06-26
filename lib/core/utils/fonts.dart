@@ -24,6 +24,11 @@ final TextStyle logotext = GoogleFonts.kumbhSans(
   fontWeight: FontWeight.bold,
   color: Colors.black,
 );
+final TextStyle cardtext = GoogleFonts.kumbhSans(
+  fontSize: 20.0,
+  fontWeight: FontWeight.bold,
+  color: const Color.fromARGB(255, 255, 255, 255),
+);
 final TextStyle bodyText = GoogleFonts.karla(
   fontSize: 16.0,
   color: Colors.black,

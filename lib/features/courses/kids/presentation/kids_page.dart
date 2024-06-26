@@ -5,6 +5,7 @@ import 'package:awoke_learning_app/core/widgets/top_gradientcard.dart';
 import 'package:awoke_learning_app/features/auth/presentation/widgets/back_button.dart';
 import 'package:awoke_learning_app/features/mainpage/widgets/green_gradient_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:lottie/lottie.dart';
 
@@ -51,7 +52,7 @@ class KidsPage extends StatelessWidget {
               width: 300,
               child: Lottie.asset("assets/json/kids1.json", fit: BoxFit.cover)),
           const GreenGradientWidget(headtext: "courses"),
-          kHeight35,
+          kHeight20,
           const HorizontallyScrollableCards(),
         ],
       )),
@@ -65,47 +66,51 @@ class HorizontallyScrollableCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200, // Adjust the height of the cards container
+      height: 220,
       child: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: ListView(
           scrollDirection: Axis.horizontal,
           children: const [
             CardItem(
-              title: 'Card 1',
-              description: 'This is the first card.',
+              asset: 'assets/images/creativewriting.svg',
+              description: 'Creative Writing',
               colors: [
                 Color(0xff0AA8B2),
                 Color(0xff04484C),
               ],
-              icon: Icons.star,
+              imageheight: 145,
+              imagewidth: 200,
             ),
             CardItem(
-              title: 'Card 2',
-              description: 'This is the second card.',
+              asset: 'assets/images/publicspeaking.svg',
+              description: 'Public Speaking',
               colors: [
                 Color(0xffFD0514),
                 Color(0xff97030C),
               ],
-              icon: Icons.favorite,
+              imageheight: 145,
+              imagewidth: 200,
             ),
             CardItem(
-              title: 'Card 3',
-              description: 'This is the third card.',
+              asset: 'assets/images/personality.svg',
+              description: 'Personality Development',
               colors: [
                 Color(0xff8E17D7),
                 Color(0xff4A0C71),
               ],
-              icon: Icons.access_alarm,
+              imageheight: 145,
+              imagewidth: 200,
             ),
             CardItem(
-              title: 'Card 3',
-              description: 'This is the third card.',
+              asset: 'assets/images/comingsoon.svg',
+              description: '',
               colors: [
                 Color(0xff2CB20A),
                 Color(0xff134C04),
               ],
-              icon: Icons.access_alarm,
+              imageheight: 170,
+              imagewidth: 210,
             ),
           ],
         ),
@@ -115,17 +120,21 @@ class HorizontallyScrollableCards extends StatelessWidget {
 }
 
 class CardItem extends StatelessWidget {
-  final String title;
+  final String asset;
   final String description;
   final List<Color> colors;
-  final IconData icon;
+
+  final double imageheight;
+
+  final double imagewidth;
 
   const CardItem({
     super.key,
-    required this.title,
+    required this.asset,
     required this.description,
     required this.colors,
-    required this.icon,
+    required this.imageheight,
+    required this.imagewidth,
   });
 
   @override
@@ -138,7 +147,7 @@ class CardItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Container(
-        height: 150,
+        height: 130,
         width: 300,
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
@@ -148,25 +157,21 @@ class CardItem extends StatelessWidget {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight)),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(icon, size: 40, color: Colors.white),
-            const SizedBox(height: 10),
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+            SizedBox(
+              // height: 145,
+              // width: 200,
+              height: imageheight,
+              width: imagewidth,
+              child: SvgPicture.asset(asset),
+            ),
+            if (description.isNotEmpty)
+              Text(
+                description,
+                style: cardtext,
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 5),
-            Text(
-              description,
-              style: const TextStyle(fontSize: 14, color: Colors.white),
-              textAlign: TextAlign.center,
-            ),
           ],
         ),
       ),
