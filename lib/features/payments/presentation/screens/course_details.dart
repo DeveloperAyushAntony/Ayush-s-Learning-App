@@ -1,7 +1,9 @@
 import 'package:awoke_learning_app/core/utils/app_styles.dart';
 import 'package:awoke_learning_app/core/utils/constants.dart';
 import 'package:awoke_learning_app/core/utils/fonts.dart';
+import 'package:awoke_learning_app/features/auth/presentation/widgets/back_button.dart';
 import 'package:awoke_learning_app/features/mainpage/widgets/awoke_logo.dart';
+import 'package:awoke_learning_app/features/payments/presentation/widgets/green_buy_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,8 +24,10 @@ class CoursePage extends StatelessWidget {
           children: [
             kHeight10,
             const Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                CustomBackButton(),
+                kWidth120,
                 Awokelogo(
                   logoheight: 80,
                   logowidth: 80,
@@ -79,7 +83,7 @@ class CoursePage extends StatelessWidget {
                     "Purchase  Amount",
                     style: homeGreadientext,
                   ),
-                  kHeight20,
+                  kHeight45,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -93,10 +97,12 @@ class CoursePage extends StatelessWidget {
                         children: [
                           Positioned(
                             top: 19,
+                            left: 2,
+                            right: -5,
                             child: Container(
                               color: Colors.black,
                               height: 5,
-                              width: 85,
+                              width: 95,
                             ),
                           ),
                           Text(
@@ -106,7 +112,10 @@ class CoursePage extends StatelessWidget {
                         ],
                       )
                     ],
-                  )
+                  ),
+                  kHeight65,
+                  GreenBuyButton(
+                      otpbuttonText: "Go to Purchase Page", onPressed: () {})
                 ],
               ),
             )

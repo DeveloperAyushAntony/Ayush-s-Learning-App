@@ -9,6 +9,7 @@ const kHeight25 = SizedBox(height: 25);
 const kHeight30 = SizedBox(height: 30);
 const kHeight35 = SizedBox(height: 35);
 const kHeight45 = SizedBox(height: 45);
+const kHeight65 = SizedBox(height: 45);
 const kHeight80 = SizedBox(height: 80);
 const kHeight120 = SizedBox(height: 120);
 
@@ -22,5 +23,7 @@ const kWidth40 = SizedBox(width: 40);
 const kWidth45 = SizedBox(width: 45);
 const kWidth50 = SizedBox(width: 50);
 const kWidth55 = SizedBox(width: 55);
+
 const kWidth80 = SizedBox(width: 80);
+const kWidth105 = SizedBox(width: 65);
 const kWidth120 = SizedBox(width: 120);
