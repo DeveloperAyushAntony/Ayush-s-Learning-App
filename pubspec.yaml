@@ -70,6 +70,10 @@ flutter:
     - assets\images\personality.svg
     - assets\images\comingsoon.svg
     - assets\images\interview.svg
+    - assets\images\interviewpage.svg
+    - assets\images\creativepage.svg
+    - assets\images\personalitypage.svg
+    - assets\images\publicspeakpage.svg
    
     
    

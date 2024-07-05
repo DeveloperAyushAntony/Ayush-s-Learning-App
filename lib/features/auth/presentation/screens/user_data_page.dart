@@ -136,7 +136,7 @@ class UserDataPage extends StatelessWidget {
                   );
 
                   // Navigate to /home after a short delay and remove all previous routes
-                  Future.delayed(const Duration(seconds: 2), () {
+                  Future.delayed(const Duration(seconds: 1), () {
                     Navigator.of(context).pushNamedAndRemoveUntil(
                       '/homepage',
                       (Route<dynamic> route) => false,

@@ -2,15 +2,19 @@ import 'package:awoke_learning_app/features/auth/presentation/screens/auth_page.
 import 'package:awoke_learning_app/features/auth/presentation/screens/loginpage.dart';
 import 'package:awoke_learning_app/features/auth/presentation/screens/otp_page.dart';
 import 'package:awoke_learning_app/features/auth/presentation/screens/user_data_page.dart';
-
 import 'package:awoke_learning_app/features/bottomnavigation/presentation/screen_homepage.dart';
 import 'package:awoke_learning_app/features/bottomnavigation/providers/bottomnav_index_provider.dart';
-import 'package:awoke_learning_app/features/courses/grown_ups/presentation/grownups.dart';
-import 'package:awoke_learning_app/features/courses/kg/presentation/kg_page.dart';
-import 'package:awoke_learning_app/features/courses/kids/presentation/kids_page.dart';
-import 'package:awoke_learning_app/features/courses/school_teens/presentation/school_teens_page.dart';
-import 'package:awoke_learning_app/features/courses/veterans/presentation/veterans.dart';
+import 'package:awoke_learning_app/features/categories/grown_ups/presentation/grownups.dart';
+import 'package:awoke_learning_app/features/categories/kg/presentation/kg_page.dart';
+import 'package:awoke_learning_app/features/categories/kids/presentation/kids_page.dart';
+import 'package:awoke_learning_app/features/categories/school_teens/presentation/school_teens_page.dart';
+import 'package:awoke_learning_app/features/categories/veterans/presentation/veterans.dart';
+import 'package:awoke_learning_app/features/courses/presentation/creative_writing.dart';
+import 'package:awoke_learning_app/features/courses/presentation/interview_preparation.dart';
+import 'package:awoke_learning_app/features/courses/presentation/personality_development.dart';
+import 'package:awoke_learning_app/features/courses/presentation/public_speaking.dart';
 import 'package:awoke_learning_app/features/onboarding/presentation/screens/onboarding_screen.dart';
+import 'package:awoke_learning_app/features/payments/presentation/screens/course_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
@@ -58,6 +62,12 @@ class MyApp extends StatelessWidget {
           '/schoolteenspage': (context) => const SchoolTeensPage(),
           '/grownupspage': (context) => const GrownupsPage(),
           '/veteranspage': (context) => const VeteransPage(),
+          '/creativewriting': (context) => const Creativewriting(),
+          '/publicspeaking': (context) => const PublicSpeaking(),
+          '/personalitydevelopment': (context) =>
+              const PersonalityDevelopment(),
+          '/interviewpreparation': (context) => const InterviewPreparation(),
+          '/coursedetails': (context) => const CoursePage(),
         },
       ),
     );

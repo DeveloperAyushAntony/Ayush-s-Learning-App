@@ -8,3 +8,5 @@ const kPurpleColor = Colors.purple;
 const kWhiteColor = Color.fromARGB(255, 255, 255, 255);
 const klightbluegrey = Color.fromARGB(64, 0, 119, 255);
 const kViolet = Color.fromARGB(255, 94, 7, 255);
+const kgrey = Color.fromARGB(255, 184, 180, 180);
+const kgrey1 = Color.fromARGB(255, 206, 205, 205);

@@ -75,10 +75,26 @@ final TextStyle appotptext = GoogleFonts.montserrat(
   fontWeight: FontWeight.bold,
   color: const Color.fromARGB(255, 0, 0, 0),
 );
+final TextStyle coursetext = GoogleFonts.montserrat(
+  fontSize: 22.0,
+  fontWeight: FontWeight.bold,
+  color: const Color.fromARGB(255, 0, 0, 0),
+);
+final TextStyle definitiontext = GoogleFonts.montserrat(
+  fontSize: 16.0,
+  fontWeight: FontWeight.bold,
+  color: const Color.fromARGB(255, 0, 0, 0),
+);
+
 final TextStyle otpheadtext = GoogleFonts.lusitana(
   fontSize: 25.0,
   fontWeight: FontWeight.bold,
   color: const Color.fromARGB(255, 255, 255, 255),
+);
+final TextStyle amounttext = GoogleFonts.lusitana(
+  fontSize: 35.0,
+  fontWeight: FontWeight.bold,
+  color: const Color.fromARGB(255, 0, 0, 0),
 );
 final TextStyle mainpageheadtext = GoogleFonts.mavenPro(
   fontSize: 27.0,
@@ -87,6 +103,11 @@ final TextStyle mainpageheadtext = GoogleFonts.mavenPro(
 );
 final TextStyle mainpagepersontext = GoogleFonts.mavenPro(
   fontSize: 35.0,
+  fontWeight: FontWeight.bold,
+  color: const Color.fromARGB(255, 15, 105, 128),
+);
+final TextStyle awoketext = GoogleFonts.mavenPro(
+  fontSize: 25.0,
   fontWeight: FontWeight.bold,
   color: const Color.fromARGB(255, 15, 105, 128),
 );
