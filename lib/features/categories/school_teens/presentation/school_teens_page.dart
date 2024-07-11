@@ -13,6 +13,7 @@ class SchoolTeensPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
           child: Column(
@@ -47,8 +48,8 @@ class SchoolTeensPage extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 250,
-            width: 250,
+            height: size.height * 0.35,
+            width: size.width * 0.65,
             child: Lottie.asset("assets/json/schoolteens1.json"),
           ),
           const GreenGradientWidget(headtext: "courses"),
@@ -80,7 +81,8 @@ class HorizontallyScrollableCards extends StatelessWidget {
                 Color(0xff97030C),
               ],
               imageheight: 145,
-              imagewidth: 200, route: '/creativewriting',
+              imagewidth: 200,
+              route: '/creativewriting',
             ),
             CardItem(
               asset: 'assets/images/publicspeaking.svg',
@@ -90,7 +92,8 @@ class HorizontallyScrollableCards extends StatelessWidget {
                 Color(0xff04484C),
               ],
               imageheight: 145,
-              imagewidth: 200, route: '/publicspeaking',
+              imagewidth: 200,
+              route: '/publicspeaking',
             ),
             CardItem(
               asset: 'assets/images/personality.svg',
@@ -100,7 +103,8 @@ class HorizontallyScrollableCards extends StatelessWidget {
                 Color(0xff4A0C71),
               ],
               imageheight: 145,
-              imagewidth: 200, route: '/personalitydevelopment',
+              imagewidth: 200,
+              route: '/personalitydevelopment',
             ),
             CardItem(
               asset: 'assets/images/comingsoon.svg',
@@ -110,7 +114,8 @@ class HorizontallyScrollableCards extends StatelessWidget {
                 Color(0xff134C04),
               ],
               imageheight: 170,
-              imagewidth: 210, route: '',
+              imagewidth: 210,
+              route: '',
             ),
           ],
         ),
@@ -123,7 +128,7 @@ class CardItem extends StatelessWidget {
   final String asset;
   final String description;
   final List<Color> colors;
- final double imageheight;
+  final double imageheight;
   final double imagewidth;
   final String route;
   const CardItem({
@@ -132,10 +137,11 @@ class CardItem extends StatelessWidget {
     required this.description,
     required this.colors,
     required this.imageheight,
-    required this.imagewidth, required this.route,
+    required this.imagewidth,
+    required this.route,
   });
 
-    @override
+  @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 6,

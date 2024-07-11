@@ -13,6 +13,7 @@ class VeteransPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
           child: Column(
@@ -47,8 +48,8 @@ class VeteransPage extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 250,
-            width: 250,
+            height: size.height * 0.35,
+            width: size.width * 0.65,
             child: Lottie.asset("assets/json/veterans1.json"),
           ),
           const GreenGradientWidget(headtext: "courses"),
@@ -75,6 +76,7 @@ class HorizontallyScrollableCards extends StatelessWidget {
             CardItem(
               asset: 'assets/images/creativewriting.svg',
               description: 'Creative Writing',
+              courseId: 41,
               colors: [
                 Color(0xffFD8B05),
                 Color(0xff844306),
@@ -86,6 +88,7 @@ class HorizontallyScrollableCards extends StatelessWidget {
             CardItem(
               asset: 'assets/images/publicspeaking.svg',
               description: 'Public Speaking',
+              courseId: 42,
               colors: [
                 Color(0xff8E17D7),
                 Color(0xff4A0C71),
@@ -97,6 +100,7 @@ class HorizontallyScrollableCards extends StatelessWidget {
             CardItem(
               asset: 'assets/images/personality.svg',
               description: 'Personality Development',
+              courseId: 43,
               colors: [
                 Color(0xff2CB20A),
                 Color(0xff134C04),
@@ -108,6 +112,7 @@ class HorizontallyScrollableCards extends StatelessWidget {
             CardItem(
               asset: 'assets/images/interview.svg',
               description: 'Interview Preparation',
+              courseId: 44,
               colors: [
                 Color(0xffFD0514),
                 Color(0xff97030C),
@@ -118,6 +123,7 @@ class HorizontallyScrollableCards extends StatelessWidget {
             ),
             CardItem(
               asset: 'assets/images/comingsoon.svg',
+              courseId: 0,
               description: '',
               colors: [
                 Color(0xff0AA8B2),
@@ -141,6 +147,7 @@ class CardItem extends StatelessWidget {
   final double imageheight;
   final double imagewidth;
   final String route;
+  final double courseId;
   const CardItem({
     super.key,
     required this.asset,
@@ -149,6 +156,7 @@ class CardItem extends StatelessWidget {
     required this.imageheight,
     required this.imagewidth,
     required this.route,
+    required this.courseId,
   });
 
   @override
@@ -172,12 +180,12 @@ class CardItem extends StatelessWidget {
           splashColor: kWhiteColor.withOpacity(0.5),
           onTap: () {
             if (route.isNotEmpty) {
-              Navigator.of(context).pushNamed(route);
+              Navigator.of(context).pushNamed(route, arguments: courseId);
             }
           },
           child: SizedBox(
-            height: 130,
-            width: 300,
+            height: 200,
+            width: 320,
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: Column(

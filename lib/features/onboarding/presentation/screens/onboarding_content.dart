@@ -8,58 +8,63 @@ class OnBoardingContent extends StatelessWidget {
   final String? image;
   final String? title;
   final String? description;
-  const OnBoardingContent(
-      {super.key,
-      required this.image,
-      required this.title,
-      required this.description});
+
+  const OnBoardingContent({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.description,
+  });
+
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Padding(
-      padding: const EdgeInsets.all(10),
+      padding: EdgeInsets.all(size.width * 0.05),
       child: Column(
         children: [
-          const SizedBox(
-            height: 20,
-            width: 20,
+          SizedBox(
+            height: size.height * 0.02,
           ),
           SizedBox(
-              height: 250,
-              width: 700,
-              child: Lottie.asset(
-                image!,
-                width: 700,
-                height: 500,
-              )),
-          const SizedBox(
-            height: 20,
-            width: 20,
+            height: size.height * 0.44,
+            width: size.width * 0.8,
+            child: Lottie.asset(
+              image!,
+              fit: BoxFit.contain,
+            ),
+          ),
+          SizedBox(
+            height: size.height * 0.01,
           ),
           RichText(
             textAlign: TextAlign.center,
-            text: TextSpan(children: [
-              TextSpan(
-                text: title,
-                style: const TextStyle(
-                  color: Color.fromARGB(255, 26, 89, 204),
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: title,
+                  style: TextStyle(
+                    color: const Color.fromARGB(255, 26, 89, 204),
+                    fontSize: size.width * 0.06,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-            ]),
+              ],
+            ),
           ),
-          const SizedBox(
-            height: 40,
+          SizedBox(
+            height: size.height * 0.04,
           ),
           Text(
             description!,
             style: TextStyle(
               fontFamily: heading1.toString(),
-              fontSize: 18,
+              fontSize: size.width * 0.045,
               fontWeight: FontWeight.w300,
             ),
             textAlign: TextAlign.center,
-          )
+          ),
         ],
       ),
     );

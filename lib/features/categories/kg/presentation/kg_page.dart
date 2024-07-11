@@ -13,6 +13,7 @@ class KgPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
           child: Column(
@@ -47,8 +48,8 @@ class KgPage extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 250,
-            width: 250,
+            height: size.height * 0.35,
+            width: size.width * 0.65,
             child: Lottie.asset("assets/json/kg1.json"),
           ),
           const GreenGradientWidget(headtext: "courses"),

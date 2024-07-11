@@ -12,13 +12,17 @@ class AuthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return SafeArea(
       child: Scaffold(
-        //Stack widget
         body: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
+              padding: EdgeInsets.symmetric(
+                vertical: size.height * 0.02,
+                horizontal: size.width * 0.05,
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -27,19 +31,15 @@ class AuthPage extends StatelessWidget {
                     children: [
                       SvgPicture.asset(
                         "assets/images/awoke hd.svg",
-                        width: 92,
-                      )
-                      // Image.asset(
-                      //   "assets/images/awoke hd.png", //first logo image
-                      //   width: 95,
-                      // ),
+                        width: size.width * 0.25,
+                      ),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        "Welcome to", //welcome text widget
+                        "Welcome to",
                         style: subtext,
                       ),
                     ],
@@ -48,19 +48,14 @@ class AuthPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        AppStrings
-                            .appName, //app name from app_strings.dart ....**Name of the app can be changed in the future
+                        AppStrings.appName,
                         style: logotext,
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: 320,
-                    width: 400,
-                    // child: Image.asset(
-                    //   "assets/images/centrallogin.svg", //Central image widget
-                    //   fit: BoxFit.contain,
-                    // ),
+                    height: size.height * 0.4,
+                    width: size.width,
                     child: SvgPicture.asset(
                       "assets/images/centrallogin.svg",
                       fit: BoxFit.contain,
@@ -69,66 +64,61 @@ class AuthPage extends StatelessWidget {
                 ],
               ),
             ),
-            const Positioned(
-              top: 490,
-              bottom: 120,
-              left: 54,
-              right: 55,
+            Positioned(
+              top: size.height * 0.61,
+              left: size.width * 0.1,
+              right: size.width * 0.1,
               child: Column(
                 children: [
                   CustomSigninButton(
                     buttontext: AppStrings.googlebutton,
                     asset: "assets/images/google.svg",
-                    height: 34,
-                    width: 30,
+                    height: size.height * 0.05,
+                    width: size.width * 0.08,
                   ),
-                  kHeight5,
+                  SizedBox(height: size.height * 0.01),
                   CustomSigninButton(
                     buttontext: AppStrings.whatsappbutton,
                     asset: "assets/images/whatsapp.svg",
-                    height: 41,
-                    width: 30,
+                    height: size.height * 0.06,
+                    width: size.width * 0.08,
                   ),
                 ],
               ),
-            ), //Custom sign in widget ****from****custom_signinbutton.dart
-            const Positioned(
-              top: 520,
-              left: 90,
-              bottom: -12,
-              child: OrWidget(),
-
-              ///custom or widget ****from***or_widget.dart
             ),
             Positioned(
-              top: 667,
-              left: 95,
+              top: size.height * 0.79,
+              left: size.width * 0.25,
+              child: const OrWidget(),
+            ),
+            Positioned(
+              top: size.height * 0.83,
+              left: size.width * 0.3,
               child: Text(
-                AppStrings.accountQuestion, //account widget
+                AppStrings.accountQuestion,
                 style: bodyText,
               ),
             ),
             Positioned(
-              top: 690,
-              left: 155,
+              top: size.height * 0.86,
+              left: size.width * 0.42,
               child: TextButton(
-                //text button Login
                 onPressed: () {
-                  Navigator.of(context).pushNamed(
-                    '/loginpage',
-                  );
+                  Navigator.of(context).pushNamed('/loginpage');
                 },
-
                 style: TextButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0))),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
                 child: Text(
                   "Login",
                   style: TextStyle(
-                      fontFamily: GoogleFonts.aBeeZee.toString(),
-                      fontSize: 19,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.orange),
+                    fontFamily: GoogleFonts.aBeeZee().fontFamily,
+                    fontSize: size.width * 0.05,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.orange,
+                  ),
                 ),
               ),
             )

@@ -14,6 +14,7 @@ class GrownupsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
           child: Column(
@@ -49,8 +50,8 @@ class GrownupsPage extends StatelessWidget {
           ),
           kHeight20,
           SizedBox(
-            height: 240,
-            width: 350,
+            height: size.height * 0.35,
+            width: size.width * 0.65,
             child:
                 Lottie.asset("assets/json/grownups1.json", fit: BoxFit.contain),
           ),
@@ -84,7 +85,8 @@ class HorizontallyScrollableCards extends StatelessWidget {
                 Color(0xff4A0C71),
               ],
               imageheight: 145,
-              imagewidth: 200, route: '/creativewriting',
+              imagewidth: 200,
+              route: '/creativewriting',
             ),
             CardItem(
               asset: 'assets/images/publicspeaking.svg',
@@ -94,7 +96,8 @@ class HorizontallyScrollableCards extends StatelessWidget {
                 Color(0xff134C04),
               ],
               imageheight: 145,
-              imagewidth: 200, route: '/publicspeaking',
+              imagewidth: 200,
+              route: '/publicspeaking',
             ),
             CardItem(
               asset: 'assets/images/personality.svg',
@@ -104,7 +107,8 @@ class HorizontallyScrollableCards extends StatelessWidget {
                 Color(0xff97030C),
               ],
               imageheight: 145,
-              imagewidth: 200, route: '/personalitydevelopment',
+              imagewidth: 200,
+              route: '/personalitydevelopment',
             ),
             CardItem(
               asset: 'assets/images/interview.svg',
@@ -114,7 +118,8 @@ class HorizontallyScrollableCards extends StatelessWidget {
                 Color(0xff844306),
               ],
               imageheight: 145,
-              imagewidth: 200, route: '/interviewpreparation',
+              imagewidth: 200,
+              route: '/interviewpreparation',
             ),
             CardItem(
               asset: 'assets/images/comingsoon.svg',
@@ -124,9 +129,9 @@ class HorizontallyScrollableCards extends StatelessWidget {
                 Color(0xff04484C),
               ],
               imageheight: 170,
-              imagewidth: 210, route: '',
+              imagewidth: 210,
+              route: '',
             ),
-          
           ],
         ),
       ),
@@ -147,7 +152,8 @@ class CardItem extends StatelessWidget {
     required this.description,
     required this.colors,
     required this.imageheight,
-    required this.imagewidth, required this.route,
+    required this.imagewidth,
+    required this.route,
   });
 
   @override

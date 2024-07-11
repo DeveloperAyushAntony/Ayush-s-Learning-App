@@ -11,14 +11,16 @@ class Loginpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
           child: Stack(
             children: [
               const GradientCard(
-                  bottomleftval: Radius.circular(40),
-         bottomrightval: Radius.circular(40),
+                bottomleftval: Radius.circular(40),
+                bottomrightval: Radius.circular(40),
                 customalighnmentbegin: Alignment.bottomRight,
                 customalighnmentend: Alignment.topLeft,
                 customheight: 280,
@@ -29,7 +31,10 @@ class Loginpage extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: EdgeInsets.symmetric(
+                  vertical: size.height * 0.03,
+                  horizontal: size.width * 0.05,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -47,7 +52,7 @@ class Loginpage extends StatelessWidget {
                       ],
                     ),
                     const Padding(
-                      padding: EdgeInsets.all(20.0),
+                      padding: EdgeInsets.all(40.0),
                       child: Center(
                         child:
                             TextOtpVerification(), // Heading text 'OTP Verification'
@@ -61,12 +66,13 @@ class Loginpage extends StatelessWidget {
                     PhoneNumberFormField(), // phone NUmber TextFormField
                     kHeight45,
                     Center(
-                        child: ElevatedGetOTPButton(
-                      otpbuttonText: "Get OTP",
-                      onPressed: () {
-                        Navigator.of(context).pushNamed("/otppage");
-                      },
-                    ))
+                      child: ElevatedGetOTPButton(
+                        otpbuttonText: "Get OTP",
+                        onPressed: () {
+                          Navigator.of(context).pushNamed("/otppage");
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -86,7 +92,7 @@ class OtpSubText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "We will send  you a one time password to your registered mobile number",
+      "We will send you a one-time password to your registered mobile number",
       style: appotptext,
       textAlign: TextAlign.center,
     );
@@ -114,9 +120,11 @@ class LoginHappyImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return SizedBox(
-      height: 200,
-      width: 300,
+      height: size.height * 0.25,
+      width: size.width * 0.8,
       child: Image.asset(
         "assets/images/happy.png",
         fit: BoxFit.cover,
@@ -147,7 +155,7 @@ class LoginTextTWo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "Welcome to  AWOKE  family again",
+      "Welcome to AWOKE family again",
       style: appTexttitle,
     );
   }

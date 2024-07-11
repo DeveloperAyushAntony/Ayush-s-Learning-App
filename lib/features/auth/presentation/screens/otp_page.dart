@@ -13,15 +13,17 @@ class OtpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
           child: Stack(
             children: [
               const GradientCard(
-                  bottomleftval: Radius.circular(40),
-         bottomrightval: Radius.circular(40),
-                   customalighnmentbegin: Alignment.bottomRight,
+                bottomleftval: Radius.circular(40),
+                bottomrightval: Radius.circular(40),
+                customalighnmentbegin: Alignment.bottomRight,
                 customalighnmentend: Alignment.topLeft,
                 customheight: 280,
                 customwidth: 800,
@@ -31,100 +33,78 @@ class OtpPage extends StatelessWidget {
                 ],
               ),
               Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        const CustomBackButton(), //back button
-                        kHeight120,
-
-                        Padding(
-                          padding: const EdgeInsets.all(30.0),
-                          child: Center(
-                              child: Text(
-                            "OTP Verification",
-                            style: otpheadtext,
-                          ) // Heading text 'OTP Verification !white'
-                              ),
+                padding: EdgeInsets.symmetric(
+                  vertical: size.height * 0.03,
+                  horizontal: size.width * 0.05,
+                ),
+                child: Column(
+                  children: [
+                    const CustomBackButton(), //back button
+                    SizedBox(height: size.height * 0.15),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20.0),
+                      child: Center(
+                        child: Text(
+                          "OTP Verification",
+                          style: otpheadtext,
                         ),
-                        kHeight45,
-                        Text(
-                          "Enter the OTP sent to",
-                          style: buttonText,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "+917012647147",
-                              style: buttonText,
-                            )
-                          ],
-                        ),
-                        kHeight20,
-                        const Center(
-                          child: CircularProgressIndicator(
-                              strokeWidth: 4, color: kblueColor),
-                        ),
-                        kHeight20,
-                        OtpTextField(
-                          disabledBorderColor: kblueColor,
-                          enabledBorderColor: kblueColor,
-                          numberOfFields: 5,
-                          focusedBorderColor: kblueColor,
-                          fillColor: kblueColor,
-
-                          //set to true to show as box or false to show as dash
-                          showFieldAsBox: true,
-                          //runs when a code is typed in
-                          onCodeChanged: (String code) {
-                            //handle validation or checks here
-                          },
-                          //runs when every textfield is filled
-                          onSubmit: (String verificationCode) {
-                            // showDialog(
-                            //     context: context,
-                            //     builder: (context) {
-                            //       return AlertDialog(
-                            //         title: Text("Verification Code"),
-                            //         content:
-                            //             Text('Code entered is $verificationCode'),
-                            //       );
-                            //     });
-                          }, // end onSubmit
-                        ),
-                        kHeight45,
-                        const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Did'nt recieved OTP?",
-                              style: TextStyle(color: kBlackgrey),
-                            )
-                          ],
-                        ),
-                        kHeight10,
-                        const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Resend Code",
-                              style: TextStyle(color: Colors.red),
-                            )
-                          ],
-                        ),
-                        kHeight45,
-                        Center(
-                            child: ElevatedGetOTPButton(
-                          otpbuttonText: "Verify",
-                          onPressed: () {
-                            Navigator.of(context)
-                                .popUntil((route) => route.isFirst);
-                            Navigator.of(context)
-                                .pushReplacementNamed("/userdatapage");
-                          },
-                        )),
-                      ])),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      "Enter the OTP sent to",
+                      style: buttonText,
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      "+917012647147",
+                      style: buttonText,
+                    ),
+                    const SizedBox(height: 20),
+                    const Center(
+                      child: CircularProgressIndicator(
+                          strokeWidth: 4, color: kblueColor),
+                    ),
+                    const SizedBox(height: 20),
+                    OtpTextField(
+                      disabledBorderColor: kblueColor,
+                      enabledBorderColor: kblueColor,
+                      numberOfFields: 5,
+                      focusedBorderColor: kblueColor,
+                      fillColor: kblueColor,
+                      showFieldAsBox: true,
+                      onCodeChanged: (String code) {
+                        //handle validation or checks here
+                      },
+                      onSubmit: (String verificationCode) {
+                        // handle OTP submission
+                      },
+                    ),
+                    const SizedBox(height: 45),
+                    const Text(
+                      "Didn't receive OTP?",
+                      style: TextStyle(color: kBlackgrey),
+                    ),
+                    const SizedBox(height: 10),
+                    const Text(
+                      "Resend Code",
+                      style: TextStyle(color: Colors.red),
+                    ),
+                    const SizedBox(height: 45),
+                    Center(
+                      child: ElevatedGetOTPButton(
+                        otpbuttonText: "Verify",
+                        onPressed: () {
+                          Navigator.of(context)
+                              .popUntil((route) => route.isFirst);
+                          Navigator.of(context)
+                              .pushReplacementNamed("/userdatapage");
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

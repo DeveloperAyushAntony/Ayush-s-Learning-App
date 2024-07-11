@@ -10,12 +10,14 @@ class MentorImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 95,
-      height: 95,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(95 / 2),
-        child: SvgPicture.asset(imagePath))
+    return InkWell(
+      
+      child: SizedBox(
+          width: 95,
+          height: 95,
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(95 / 2),
+              child: SvgPicture.asset(imagePath))),
     );
   }
 }

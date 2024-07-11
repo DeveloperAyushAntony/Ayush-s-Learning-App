@@ -7,6 +7,9 @@ class Creativewriting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final courseDetailsArguments =
+        ModalRoute.of(context)?.settings.arguments as double;
+    print(courseDetailsArguments);
     return const CourseWidget(
       route: "/coursedetails",
       heading: "Creative Writing",

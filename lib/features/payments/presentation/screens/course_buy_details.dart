@@ -4,7 +4,7 @@ import 'package:awoke_learning_app/core/utils/fonts.dart';
 import 'package:awoke_learning_app/features/auth/presentation/widgets/back_button.dart';
 import 'package:awoke_learning_app/features/mainpage/widgets/awoke_logo.dart';
 import 'package:awoke_learning_app/features/payments/presentation/widgets/green_buy_button.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 
 class CoursePage extends StatelessWidget {
@@ -114,8 +114,7 @@ class CoursePage extends StatelessWidget {
                     ],
                   ),
                   kHeight65,
-                  GreenBuyButton(
-                      otpbuttonText: "Go to Purchase Page", onPressed: () {})
+                  GreenBuyButton(otpbuttonText: "Buy", onPressed: () {})
                 ],
               ),
             )

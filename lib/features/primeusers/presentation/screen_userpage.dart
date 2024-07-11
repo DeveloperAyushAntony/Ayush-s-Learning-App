@@ -11,7 +11,7 @@ class ScreenPrimeUserPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
+    final size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -33,7 +33,7 @@ class ScreenPrimeUserPage extends StatelessWidget {
               kHeight10,
               Center(
                 child: SizedBox(
-                    width: 270,
+                    width: size.width * 0.80,
                     child: Lottie.asset("assets/json/accounts.json")),
               ),
               kHeight10,
@@ -147,6 +147,7 @@ class AccountDetailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 11),
@@ -164,9 +165,9 @@ class AccountDetailWidget extends StatelessWidget {
             Text.rich(
               TextSpan(text: "With Us", style: withustext),
             ),
-            const Awokelogo(
-              logoheight: 110,
-              logowidth: 110,
+            Awokelogo(
+              logoheight: size.height * 0.15,
+              logowidth: size.width * 0.20,
             )
           ],
         ),

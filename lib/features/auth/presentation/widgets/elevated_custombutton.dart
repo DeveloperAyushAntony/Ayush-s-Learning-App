@@ -40,7 +40,7 @@ class ElevatedGetOTPButton extends StatelessWidget {
                       topRight: Radius.circular(50),
                       topLeft: Radius.circular(7.8)),
                   child: Container(
-                    width: 130.0, // Half of the container width
+                    width: 150.0, // Half of the container width
                     height: 130.0, // Circle height
 
                     decoration: const BoxDecoration(
