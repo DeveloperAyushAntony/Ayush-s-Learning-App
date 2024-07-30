@@ -8,11 +8,12 @@ class CustomSigninButton extends StatelessWidget {
       required this.buttontext,
       required this.asset,
       required this.height,
-      required this.width});
+      required this.width, required this.onTap});
   final String buttontext;
   final String asset;
   final double height;
   final double width;
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,7 +27,7 @@ class CustomSigninButton extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(60)),
           child: InkWell(
             borderRadius: BorderRadius.circular(60),
-            onTap: () {},
+            onTap:onTap,
             child: ListTile(
               leading: SvgPicture.asset(
                 asset,

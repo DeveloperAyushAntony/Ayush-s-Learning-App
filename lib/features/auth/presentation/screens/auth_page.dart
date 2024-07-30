@@ -1,4 +1,6 @@
-import 'package:awoke_learning_app/core/utils/constants.dart';
+
+import 'package:awoke_learning_app/features/auth/presentation/providers/auth_provider.dart';
+import 'package:awoke_learning_app/features/auth/presentation/screens/user_data_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,6 +8,7 @@ import 'package:awoke_learning_app/core/utils/app_strings.dart';
 import 'package:awoke_learning_app/core/utils/fonts.dart';
 import 'package:awoke_learning_app/features/auth/presentation/widgets/custom_signinbutton.dart';
 import 'package:awoke_learning_app/features/auth/presentation/widgets/or_widget.dart';
+import 'package:provider/provider.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
@@ -13,6 +16,7 @@ class AuthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final authProvider = Provider.of<AuthProvider>(context);
 
     return SafeArea(
       child: Scaffold(
@@ -70,11 +74,36 @@ class AuthPage extends StatelessWidget {
               right: size.width * 0.1,
               child: Column(
                 children: [
-                  CustomSigninButton(
-                    buttontext: AppStrings.googlebutton,
-                    asset: "assets/images/google.svg",
-                    height: size.height * 0.05,
-                    width: size.width * 0.08,
+                  FutureBuilder<void>(
+                    future: null, // Placeholder for now
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const CircularProgressIndicator();
+                      }
+                      return CustomSigninButton(
+                        buttontext: AppStrings.googlebutton,
+                        asset: "assets/images/google.svg",
+                        height: size.height * 0.05,
+                        width: size.width * 0.08,
+                        onTap: () async {
+                          print('Sign-in button tapped.');
+                          await authProvider.signIn();
+
+                          if (authProvider.user != null) {
+                            print('Navigating to UserDataPage...');
+                            if (context.mounted) {
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder: (context) => const UserDataPage(),
+                                ),
+                              );
+                            }
+                          } else {
+                            print('Sign-in failed or was cancelled.');
+                          }
+                        },
+                      );
+                    },
                   ),
                   SizedBox(height: size.height * 0.01),
                   CustomSigninButton(
@@ -82,6 +111,7 @@ class AuthPage extends StatelessWidget {
                     asset: "assets/images/whatsapp.svg",
                     height: size.height * 0.06,
                     width: size.width * 0.08,
+                    onTap: () {},
                   ),
                 ],
               ),
@@ -121,7 +151,7 @@ class AuthPage extends StatelessWidget {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -76,7 +76,7 @@ class HorizontallyScrollableCards extends StatelessWidget {
             CardItem(
               asset: 'assets/images/creativewriting.svg',
               description: 'Creative Writing',
-              courseId: 41,
+              courseId: 51,
               colors: [
                 Color(0xffFD8B05),
                 Color(0xff844306),
@@ -88,7 +88,7 @@ class HorizontallyScrollableCards extends StatelessWidget {
             CardItem(
               asset: 'assets/images/publicspeaking.svg',
               description: 'Public Speaking',
-              courseId: 42,
+              courseId: 52,
               colors: [
                 Color(0xff8E17D7),
                 Color(0xff4A0C71),
@@ -100,7 +100,7 @@ class HorizontallyScrollableCards extends StatelessWidget {
             CardItem(
               asset: 'assets/images/personality.svg',
               description: 'Personality Development',
-              courseId: 43,
+              courseId: 53,
               colors: [
                 Color(0xff2CB20A),
                 Color(0xff134C04),
@@ -112,7 +112,7 @@ class HorizontallyScrollableCards extends StatelessWidget {
             CardItem(
               asset: 'assets/images/interview.svg',
               description: 'Interview Preparation',
-              courseId: 44,
+              courseId: 54,
               colors: [
                 Color(0xffFD0514),
                 Color(0xff97030C),

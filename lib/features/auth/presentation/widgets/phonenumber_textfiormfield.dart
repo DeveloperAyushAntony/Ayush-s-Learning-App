@@ -1,30 +1,55 @@
+import 'package:awoke_learning_app/core/utils/app_styles.dart';
 import 'package:awoke_learning_app/core/utils/fonts.dart';
+import 'package:awoke_learning_app/features/auth/presentation/providers/phone_number_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class PhoneNumberFormField extends StatelessWidget {
-  PhoneNumberFormField({super.key});
-  final mobileTextcontroller = TextEditingController();
+  const PhoneNumberFormField({super.key, required this.focusNode});
+  final FocusNode focusNode;
+
   @override
   Widget build(BuildContext context) {
+    return PhoneNumberInputField(focusNode: focusNode);
+  }
+}
+
+class PhoneNumberInputField extends StatelessWidget {
+  const PhoneNumberInputField({super.key, required this.focusNode});
+  final FocusNode focusNode;
+
+  @override
+  Widget build(BuildContext context) {
+    final phoneNumberProvider = Provider.of<PhoneNumberProvider>(context);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
           width: 250,
           child: TextFormField(
+            readOnly: true,
+            focusNode: focusNode,
             cursorColor: const Color.fromARGB(255, 25, 2, 155),
-            controller: mobileTextcontroller,
+            controller: TextEditingController(
+                text: phoneNumberProvider.phoneNumberString),
             keyboardType: TextInputType.number,
             maxLength: 10,
-           
-
             decoration: InputDecoration(
-              prefix: const Text('+91 ', style: TextStyle(color: Colors.black)),
+              prefix: const Text('        +91 ',
+                  style: TextStyle(color: Colors.black)),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
                 borderSide: const BorderSide(
-                  color: Color.fromARGB(255, 4, 34, 168),
-                  width: 2,
+                  color: kblueColor,
+                  width: 2.4,
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+                borderSide: const BorderSide(
+                  color: kblueColor,
+                  width: 2.4,
                 ),
               ),
               contentPadding: const EdgeInsets.only(left: 25),
@@ -35,16 +60,9 @@ class PhoneNumberFormField extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
               ),
             ),
-            // validator: (value) {
-            //   if (value == null || value.isEmpty) {
-            //     return 'Please enter your phone number.';
-            //   }
-            //   return null; // Return null for valid input
-            // },
           ),
         ),
       ],
     );
   }
 }
-

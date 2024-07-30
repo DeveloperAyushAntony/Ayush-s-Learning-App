@@ -7,11 +7,15 @@ class PublicSpeaking extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CourseWidget(
+    final courseDetailsArguments =
+        ModalRoute.of(context)?.settings.arguments as double;
+    print(courseDetailsArguments);
+    return CourseWidget(
       route: "/coursedetails",
       heading: "Public Speaking",
       image: "assets/images/publicspeakpage.svg",
       description: AppStrings.publicspeaktext,
+      courseId: courseDetailsArguments,
     );
   }
 }

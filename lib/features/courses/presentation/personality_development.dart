@@ -7,11 +7,15 @@ class PersonalityDevelopment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CourseWidget(
+    final courseDetailsArguments =
+        ModalRoute.of(context)?.settings.arguments as double;
+    print(courseDetailsArguments);
+    return CourseWidget(
       route: "/coursedetails",
       heading: "Personality Development",
       image: "assets/images/personalitypage.svg",
       description: AppStrings.personalitytext,
+      courseId: courseDetailsArguments,
     );
   }
 }

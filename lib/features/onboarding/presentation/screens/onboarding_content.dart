@@ -1,3 +1,4 @@
+import 'package:awoke_learning_app/core/utils/app_styles.dart';
 import 'package:awoke_learning_app/core/utils/fonts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,7 @@ class OnBoardingContent extends StatelessWidget {
                 TextSpan(
                   text: title,
                   style: TextStyle(
-                    color: const Color.fromARGB(255, 26, 89, 204),
+                    color: kblueColor,
                     fontSize: size.width * 0.06,
                     fontWeight: FontWeight.bold,
                   ),

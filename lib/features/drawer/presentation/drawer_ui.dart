@@ -1,6 +1,6 @@
-
 import 'package:awoke_learning_app/core/utils/constants.dart';
 import 'package:awoke_learning_app/core/utils/fonts.dart';
+import 'package:awoke_learning_app/features/auth/presentation/providers/auth_provider.dart';
 import 'package:awoke_learning_app/features/drawer/widgets/drawer_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -94,7 +94,8 @@ class DrawerPageUi extends StatelessWidget {
                         BoxDecoration(borderRadius: BorderRadius.circular(50)),
                     child: ElevatedButton(
                       onPressed: () {
-                        // Your button action here
+                        // Navigator.of(context)
+                        //     .pushNamedAndRemoveUntil("/", (route) => false);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,

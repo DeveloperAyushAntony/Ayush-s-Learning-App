@@ -87,6 +87,7 @@ class HorizontallyScrollableCards extends StatelessWidget {
               imageheight: 145,
               imagewidth: 200,
               route: '/creativewriting',
+              courseId: 41,
             ),
             CardItem(
               asset: 'assets/images/publicspeaking.svg',
@@ -98,6 +99,7 @@ class HorizontallyScrollableCards extends StatelessWidget {
               imageheight: 145,
               imagewidth: 200,
               route: '/publicspeaking',
+              courseId: 42,
             ),
             CardItem(
               asset: 'assets/images/personality.svg',
@@ -109,6 +111,7 @@ class HorizontallyScrollableCards extends StatelessWidget {
               imageheight: 145,
               imagewidth: 200,
               route: '/personalitydevelopment',
+              courseId: 43,
             ),
             CardItem(
               asset: 'assets/images/interview.svg',
@@ -120,6 +123,7 @@ class HorizontallyScrollableCards extends StatelessWidget {
               imageheight: 145,
               imagewidth: 200,
               route: '/interviewpreparation',
+              courseId: 44,
             ),
             CardItem(
               asset: 'assets/images/comingsoon.svg',
@@ -131,6 +135,7 @@ class HorizontallyScrollableCards extends StatelessWidget {
               imageheight: 170,
               imagewidth: 210,
               route: '',
+              courseId: 0,
             ),
           ],
         ),
@@ -146,6 +151,7 @@ class CardItem extends StatelessWidget {
   final double imageheight;
   final double imagewidth;
   final String route;
+  final double courseId;
   const CardItem({
     super.key,
     required this.asset,
@@ -154,6 +160,7 @@ class CardItem extends StatelessWidget {
     required this.imageheight,
     required this.imagewidth,
     required this.route,
+    required this.courseId,
   });
 
   @override
@@ -177,7 +184,7 @@ class CardItem extends StatelessWidget {
           splashColor: kWhiteColor.withOpacity(0.5),
           onTap: () {
             if (route.isNotEmpty) {
-              Navigator.of(context).pushNamed(route);
+              Navigator.of(context).pushNamed(route,arguments: courseId);
             }
           },
           child: SizedBox(

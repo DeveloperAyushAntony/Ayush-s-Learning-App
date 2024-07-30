@@ -1,3 +1,4 @@
+import 'package:awoke_learning_app/core/utils/app_styles.dart';
 import 'package:awoke_learning_app/core/utils/constants.dart';
 import 'package:awoke_learning_app/core/utils/fonts.dart';
 import 'package:awoke_learning_app/features/auth/presentation/screens/auth_page.dart';
@@ -33,6 +34,9 @@ class OnBoardingScreen extends StatelessWidget {
                       children: [
                         kHeight80,
                         TextButton(
+                            style: ButtonStyle(
+                                foregroundColor:
+                                    WidgetStateProperty.all<Color>(kblueColor)),
                             onPressed: () {
                               Navigator.pushReplacement(
                                   context,
@@ -80,6 +84,9 @@ class OnBoardingScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextButton(
+                            style: ButtonStyle(
+                                foregroundColor:
+                                    WidgetStateProperty.all<Color>(kblueColor)),
                             onPressed: () {
                               _pageController.previousPage(
                                   duration: const Duration(milliseconds: 500),
@@ -103,10 +110,12 @@ class OnBoardingScreen extends StatelessWidget {
                             }
                           },
                           style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all<Color>(
+                            backgroundColor:
+                                WidgetStateProperty.all<Color>(kblueColor),
+                            foregroundColor: WidgetStateProperty.all<Color>(
                                 const Color.fromARGB(255, 255, 255, 255)),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
+                            shape:
+                                WidgetStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0),
                               ),

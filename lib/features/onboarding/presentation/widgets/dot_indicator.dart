@@ -1,3 +1,4 @@
+import 'package:awoke_learning_app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class DotIndicator extends StatelessWidget {
@@ -12,9 +13,7 @@ class DotIndicator extends StatelessWidget {
       width: isActive ? 24 : 8,
       decoration: BoxDecoration(
           border: isActive ? null : Border.all(color: Colors.black),
-          color: isActive
-              ? const Color.fromARGB(255, 2, 48, 128)
-              : Colors.blueGrey,
+          color: isActive ? kblueColor : Colors.blueGrey,
           borderRadius: BorderRadius.circular(12)),
     );
   }

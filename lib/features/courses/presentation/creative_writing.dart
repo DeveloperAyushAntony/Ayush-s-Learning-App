@@ -10,11 +10,12 @@ class Creativewriting extends StatelessWidget {
     final courseDetailsArguments =
         ModalRoute.of(context)?.settings.arguments as double;
     print(courseDetailsArguments);
-    return const CourseWidget(
+    return CourseWidget(
       route: "/coursedetails",
       heading: "Creative Writing",
       image: "assets/images/creativepage.svg",
       description: AppStrings.creativewritingtext,
+      courseId: courseDetailsArguments,
     );
   }
 }

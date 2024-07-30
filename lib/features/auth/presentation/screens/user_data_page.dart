@@ -57,11 +57,12 @@ class UserDataPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(4))),
                 ),
               ),
+              kHeight10,
               const Text(
                 "enter your name !!",
                 style: TextStyle(color: kRedColor),
               ),
-              kHeight10,
+              kHeight20,
               SizedBox(
                 width: 300,
                 height: 60,
@@ -73,11 +74,12 @@ class UserDataPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(4))),
                 ),
               ),
+              kHeight10,
               const Text(
                 "enter valid username !!",
                 style: TextStyle(color: kRedColor),
               ),
-              kHeight10,
+              kHeight20,
               SizedBox(
                 width: 300,
                 height: 60,
@@ -89,11 +91,12 @@ class UserDataPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(4))),
                 ),
               ),
+              kHeight10,
               const Text(
                 "enter valid mobile number !!",
                 style: TextStyle(color: kRedColor),
               ),
-              kHeight10,
+              kHeight20,
               SizedBox(
                 width: 300,
                 height: 60,
@@ -105,11 +108,12 @@ class UserDataPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(4))),
                 ),
               ),
+              kHeight10,
               const Text(
                 "enter valid email !!",
                 style: TextStyle(color: kRedColor),
               ),
-              kHeight10,
+              kHeight25,
               ElevatedGetOTPButton(
                 otpbuttonText: "Create Account",
                 onPressed: () {

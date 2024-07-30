@@ -1,14 +1,16 @@
+import 'package:awoke_learning_app/core/utils/app_styles.dart';
 import 'package:awoke_learning_app/core/utils/constants.dart';
 import 'package:awoke_learning_app/core/utils/fonts.dart';
 import 'package:awoke_learning_app/core/widgets/top_gradientcard.dart';
 import 'package:awoke_learning_app/features/auth/presentation/widgets/back_button.dart';
 import 'package:awoke_learning_app/features/auth/presentation/widgets/elevated_custombutton.dart';
+import 'package:awoke_learning_app/features/auth/presentation/widgets/numerickeypad.dart';
 import 'package:awoke_learning_app/features/auth/presentation/widgets/phonenumber_textfiormfield.dart';
 import 'package:flutter/material.dart';
 
 class Loginpage extends StatelessWidget {
-  const Loginpage({super.key});
-
+  Loginpage({super.key});
+  final _focusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -24,7 +26,7 @@ class Loginpage extends StatelessWidget {
                 customalighnmentbegin: Alignment.bottomRight,
                 customalighnmentend: Alignment.topLeft,
                 customheight: 280,
-                customwidth: 800,
+                customwidth: 900,
                 gradientcolors: [
                   Color(0xff153B9C),
                   Color(0xff1C4FD1),
@@ -63,8 +65,16 @@ class Loginpage extends StatelessWidget {
                       child: OtpSubText(), //OtpSubText
                     ),
                     kHeight25,
-                    PhoneNumberFormField(), // phone NUmber TextFormField
-                    kHeight45,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20.0),
+                      child: PhoneNumberFormField(
+                        focusNode: _focusNode,
+                      ),
+                    ),
+                    // phone NUmber TextFormField
+                    const NumericKeypad(
+                      kblueColor: kblueColor,
+                    ),
                     Center(
                       child: ElevatedGetOTPButton(
                         otpbuttonText: "Get OTP",
