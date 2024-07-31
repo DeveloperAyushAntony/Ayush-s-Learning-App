@@ -19,17 +19,20 @@ class LoginStateAdapter extends TypeAdapter<LoginState> {
     return LoginState(
       accessToken: fields[0] as String?,
       refreshToken: fields[1] as String?,
+      displayName: fields[2] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, LoginState obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.accessToken)
       ..writeByte(1)
-      ..write(obj.refreshToken);
+      ..write(obj.refreshToken)
+      ..writeByte(2)
+      ..write(obj.displayName);
   }
 
   @override

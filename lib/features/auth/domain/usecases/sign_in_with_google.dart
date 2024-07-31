@@ -9,4 +9,8 @@ class SignInWithGoogle {
   Future<User?> call() async {
     return await repository.signInWithGoogle();
   }
+
+  Future<void> signOut() async {
+    await repository.signOut();
+  }
 }

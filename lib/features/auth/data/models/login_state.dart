@@ -10,8 +10,12 @@ class LoginState extends HiveObject {
   @HiveField(1)
   final String? refreshToken;
 
+  @HiveField(2)
+  final String? displayName; // Add displayName field
+
   LoginState({
     this.accessToken,
     this.refreshToken,
+    this.displayName,
   });
 }

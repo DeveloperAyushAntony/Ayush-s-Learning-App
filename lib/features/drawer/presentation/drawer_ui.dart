@@ -4,12 +4,10 @@ import 'package:awoke_learning_app/features/auth/presentation/providers/auth_pro
 import 'package:awoke_learning_app/features/drawer/widgets/drawer_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 class DrawerPageUi extends StatelessWidget {
-  const DrawerPageUi({
-    super.key,
-  });
+  const DrawerPageUi({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -72,8 +70,7 @@ class DrawerPageUi extends StatelessWidget {
                 click: () {},
                 svgpath: "assets/images/user.svg",
                 itemname: "Account",
-              ), //
-              //     ,
+              ),
               kHeight45,
               DrawerItem(
                 click: () {},
@@ -88,27 +85,44 @@ class DrawerPageUi extends StatelessWidget {
               ),
               kHeight80,
               Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Container(
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(50)),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Navigator.of(context)
-                        //     .pushNamedAndRemoveUntil("/", (route) => false);
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black, // Text color
-                        textStyle: const TextStyle(
-                            fontSize: 16), // Adjust font size as needed
-                      ),
-                      child: Text(
-                        'Logout',
-                        style: redbuttonText,
-                      ),
+                padding: const EdgeInsets.all(20.0),
+                child: Container(
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(50)),
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      // Get the AuthProvider instance
+                      final authProvider =
+                          Provider.of<AuthProvider>(context, listen: false);
+
+                      // Perform the sign-out operation
+                      try {
+                        await authProvider.signOut();
+
+                        // Check if the widget is still mounted
+                        if (context.mounted) {
+                          // Navigate to the root and clear the navigation stack
+                          Navigator.of(context)
+                              .pushNamedAndRemoveUntil("/", (route) => false);
+                        }
+                      } catch (e) {
+                        // Handle any errors if needed
+                        print('Sign-out failed: $e');
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.black, // Text color
+                      textStyle: const TextStyle(
+                          fontSize: 16), // Adjust font size as needed
                     ),
-                  )),
+                    child: Text(
+                      'Logout',
+                      style: redbuttonText,
+                    ),
+                  ),
+                ),
+              ),
               kHeight15,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
