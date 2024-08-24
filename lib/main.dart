@@ -2,8 +2,10 @@ import 'package:awoke_learning_app/features/auth/data/models/login_state.dart';
 import 'package:awoke_learning_app/features/auth/presentation/providers/auth_provider.dart';
 import 'package:awoke_learning_app/features/auth/presentation/providers/phone_number_provider.dart';
 import 'package:awoke_learning_app/features/bottomnavigation/providers/bottomnav_index_provider.dart';
+import 'package:awoke_learning_app/features/mockclasses/provider/youtube_provider.dart';
 import 'package:awoke_learning_app/features/payments/presentation/providers/courseprovider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -21,6 +23,10 @@ Future<void> main() async {
 
   final Box<LoginState> loginBox = GetIt.instance.get<Box<LoginState>>();
   final bool isLoggedIn = loginBox.get('loginState')?.accessToken != null;
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 
   runApp(MyApp(isLoggedIn: isLoggedIn));
   FlutterNativeSplash.remove();
@@ -35,6 +41,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(
+          create: (_) => getIt<YouTubeProvider>()..fetchVideos(),
+        ),
         ChangeNotifierProvider(create: (_) => BottomNavIndexProvider()),
         ChangeNotifierProvider(create: (_) => CourseProvider()),
         ChangeNotifierProvider(create: (_) => PhoneNumberProvider()),

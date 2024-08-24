@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 //height Sized box
 const kHeight5 = SizedBox(height: 5);
@@ -27,3 +28,8 @@ const kWidth55 = SizedBox(width: 55);
 const kWidth80 = SizedBox(width: 80);
 const kWidth105 = SizedBox(width: 65);
 const kWidth120 = SizedBox(width: 120);
+//base url
+final baseUrl="https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=";
+final appendUrl="https://https://www.youtube.com/watch?v=";
+   final  apiKey = dotenv.env['YOUTUBE_API_KEY']!;
+final channelId = dotenv.env['CHANNEL_ID']!;

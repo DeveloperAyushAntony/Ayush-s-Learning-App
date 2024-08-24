@@ -1,32 +1,47 @@
+import 'package:awoke_learning_app/features/mockclasses/data/datasources/youtube_data_source.dart';
+import 'package:awoke_learning_app/features/mockclasses/data/repositories/youtube_repository_impl.dart';
+import 'package:awoke_learning_app/features/mockclasses/domain/repository/youtube_repository.dart';
+import 'package:get_it/get_it.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:dio/dio.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import 'package:awoke_learning_app/features/mockclasses/domain/usecases/channel_video_usecase.dart';
+import 'package:awoke_learning_app/features/mockclasses/provider/youtube_provider.dart';
+
 import 'package:awoke_learning_app/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:awoke_learning_app/features/auth/domain/repositories/auth_repository.dart';
+
 import 'package:awoke_learning_app/features/auth/data/datasources/google_sign_in_data_source.dart';
 import 'package:awoke_learning_app/features/auth/data/datasources/hive_login_state_data_source.dart';
 import 'package:awoke_learning_app/features/auth/data/models/login_state.dart';
 import 'package:awoke_learning_app/features/auth/domain/usecases/sign_in_with_google.dart';
 import 'package:awoke_learning_app/features/auth/presentation/providers/auth_provider.dart';
-import 'package:get_it/get_it.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 final getIt = GetIt.instance;
 
 Future<void> configureDependencies() async {
   try {
+    print('Loading environment variables...');
     final supabaseUrl = dotenv.env['SUPABASE_URL'];
     final supabaseAnonKey = dotenv.env['SUPABASE_ANON_KEY'];
     final webClientId = dotenv.env['WEB_CLIENT_ID'];
+    final apiKey = dotenv.env['YOUTUBE_API_KEY'];
 
-    if (supabaseUrl == null || supabaseAnonKey == null || webClientId == null) {
-      throw Exception(
-          'Supabase or Google Web Client ID environment variables are not set.');
+    if (supabaseUrl == null ||
+        supabaseAnonKey == null ||
+        webClientId == null ||
+        apiKey == null) {
+      throw Exception('One or more environment variables are null');
     }
 
+    print('Initializing Supabase...');
     await Supabase.initialize(url: supabaseUrl, anonKey: supabaseAnonKey);
     getIt.registerSingleton<SupabaseClient>(Supabase.instance.client);
 
+    print('Initializing Hive...');
     await Hive.initFlutter();
     Hive.registerAdapter(LoginStateAdapter());
     final loginBox = await Hive.openBox<LoginState>('loginState');
@@ -39,8 +54,7 @@ Future<void> configureDependencies() async {
     getIt.registerSingleton<GoogleSignIn>(googleSignIn);
 
     getIt.registerSingleton<AuthRepository>(
-      AuthRepositoryImpl(getIt<SupabaseClient>(), getIt<GoogleSignIn>()),
-    );
+        AuthRepositoryImpl(getIt<SupabaseClient>(), getIt<GoogleSignIn>()));
 
     getIt.registerSingleton(SignInWithGoogle(getIt<AuthRepository>()));
     getIt.registerSingleton(GoogleSignInDataSource(getIt<SupabaseClient>()));
@@ -48,6 +62,32 @@ Future<void> configureDependencies() async {
       getIt<SignInWithGoogle>(),
       getIt<HiveLoginStateDataSource>(),
     ));
+
+    print("Start registering YouTube singletons");
+    getIt.registerSingleton<Dio>(Dio());
+
+    getIt.registerLazySingleton<YouTubeRemoteDataSource>(
+      () => YouTubeRemoteDataSourceImpl(),
+    );
+    print("Registered YouTube remote data source");
+
+    getIt.registerLazySingleton<YoutubeRepository>(
+      () => YoutubeRepositoryImpl(
+          remoteDataSource: getIt<YouTubeRemoteDataSource>()),
+    );
+    print("Registered YouTube repo");
+
+    getIt.registerLazySingleton<GetChannelVideos>(
+      () => GetChannelVideos(getIt<YoutubeRepository>()),
+    );
+    print("Registered GetChannelVideos");
+
+    getIt.registerLazySingleton<YouTubeProvider>(
+      () => YouTubeProvider(getChannelVideos: getIt<GetChannelVideos>()),
+    );
+    print("Registered YouTube provider");
+
+    print('Dependency configuration completed successfully');
   } catch (e) {
     print('Error configuring dependencies: $e');
   }

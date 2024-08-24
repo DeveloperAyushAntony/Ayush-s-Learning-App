@@ -1,9 +1,10 @@
-import 'package:awoke_learning_app/core/utils/app_styles.dart';
+import 'package:awoke_learning_app/features/mockclasses/presentation/widgets/videoplayerscreen.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:awoke_learning_app/core/utils/constants.dart';
 import 'package:awoke_learning_app/core/utils/fonts.dart';
 import 'package:awoke_learning_app/core/widgets/top_gradientcard.dart';
-
-import 'package:flutter/material.dart';
+import 'package:awoke_learning_app/features/mockclasses/provider/youtube_provider.dart';
 
 class ScreenMockClass extends StatelessWidget {
   const ScreenMockClass({super.key});
@@ -40,54 +41,43 @@ class ScreenMockClass extends StatelessWidget {
             ),
             kHeight10,
             Expanded(
-              child: ListView.separated(
-                separatorBuilder: (context, index) {
-                  return SizedBox(
-                    height: 50,
-                    width: 190,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          "How to learn English",
-                          style: bodyText,
-                        ),
-                        Text(
-                          "10 min",
-                          style: bodyText,
-                        )
-                      ],
-                    ),
+              child: Consumer<YouTubeProvider>(
+                builder: (context, provider, child) {
+                  if (provider.isLoading) {
+                    return const Center(
+                        child: CircularProgressIndicator(
+                      color: Colors.black,
+                    ));
+                  }
+                  if (provider.videos.isEmpty) {
+                    return const Center(child: Text('No videos available'));
+                  }
+                  return ListView.separated(
+                    separatorBuilder: (context, index) => const Divider(),
+                    itemCount: provider.videos.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final video = provider.videos[index];
+
+                      return ListTile(
+                        title: Text(video.title, style: bodyText),
+                        // subtitle: Text(video.description, style: bodyText),
+                        leading: Image.network(video.thumbnailUrl),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  VideoPlayerScreen(videoId: video.id),
+                            ),
+                          );
+                        },
+                      );
+                    },
                   );
-                },
-                itemCount: 10,
-                itemBuilder: (BuildContext context, int index) {
-                  return const VideoWidget();
                 },
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class VideoWidget extends StatelessWidget {
-  const VideoWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 200,
-      width: 20,
-      color: kRedColor,
-      child: const Center(
-        child: Icon(
-          Icons.play_circle_outline_rounded,
-          size: 50,
         ),
       ),
     );
