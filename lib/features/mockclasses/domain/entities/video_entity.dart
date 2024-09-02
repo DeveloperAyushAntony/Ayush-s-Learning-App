@@ -1,6 +1,4 @@
-import 'package:equatable/equatable.dart';
-
-class VideoEntity extends Equatable {
+class VideoEntity {
   final String id;
   final String title;
   final String description;
@@ -16,15 +14,4 @@ class VideoEntity extends Equatable {
     required this.publishedAt,
     required this.duration,
   });
-
-  @override
-  
-  List<Object?> get props => [
-        id,
-        title,
-        description,
-        thumbnailUrl,
-        publishedAt,
-        duration
-      ];
 }

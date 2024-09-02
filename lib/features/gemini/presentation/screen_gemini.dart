@@ -1,7 +1,9 @@
+import 'package:awoke_learning_app/features/gemini/provider/gemini_provider.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:awoke_learning_app/core/utils/fonts.dart';
 import 'package:awoke_learning_app/core/widgets/top_gradientcard.dart';
-import 'package:flutter/material.dart';
 
 class ScreenGemini extends StatelessWidget {
   ScreenGemini({super.key});
@@ -10,6 +12,8 @@ class ScreenGemini extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final geminiProvider = Provider.of<GeminiProvider>(context);
+
     return SafeArea(
       child: Scaffold(
         body: Column(
@@ -18,8 +22,8 @@ class ScreenGemini extends StatelessWidget {
             Stack(
               children: [
                 const GradientCard(
-                       bottomleftval: Radius.circular(40),
-         bottomrightval: Radius.circular(40),
+                  bottomleftval: Radius.circular(40),
+                  bottomrightval: Radius.circular(40),
                   gradientcolors: [
                     Color(0xff30448C),
                     Color(0xff0D1326),
@@ -50,11 +54,12 @@ class ScreenGemini extends StatelessWidget {
                 padding: const EdgeInsets.all(10.0),
                 color: Colors.grey[200], // Background color for chat area
                 child: ListView.builder(
-                  itemCount: 50, // Example number of messages
+                  itemCount: geminiProvider.messages.length,
                   itemBuilder: (context, index) {
+                    final chatMessage = geminiProvider.messages[index];
                     return ChatMessage(
-                      isUser: index % 2 == 0,
-                      message: 'Message $index',
+                      isUser: chatMessage.isUser,
+                      message: chatMessage.message,
                     );
                   },
                 ),
@@ -83,12 +88,23 @@ class ScreenGemini extends StatelessWidget {
                       size: 35,
                     ),
                     onPressed: () {
-                      // Handle send button press (e.g., submit question)
+                      final message = _textEditingController.text.trim();
+                      if (message.isNotEmpty) {
+                        geminiProvider.sendMessage(message);
+                        _textEditingController.clear();
+                      }
                     },
                   ),
                 ],
               ),
             ),
+
+            // Loading indicator
+            if (geminiProvider.isLoading)
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: CircularProgressIndicator(),
+              ),
           ],
         ),
       ),
@@ -110,7 +126,9 @@ class ChatMessage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
         margin: const EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
-          color: isUser ? const Color.fromARGB(255, 21, 24, 212) : Colors.grey[300],
+          color: isUser
+              ? const Color.fromARGB(255, 21, 24, 212)
+              : Colors.grey[300],
           borderRadius: BorderRadius.circular(15),
         ),
         child: Text(

@@ -1,3 +1,7 @@
+import 'package:awoke_learning_app/features/gemini/data/datasources/gemini_data_source.dart';
+import 'package:awoke_learning_app/features/gemini/data/repositories/gemini_repository_impl.dart';
+import 'package:awoke_learning_app/features/gemini/domain/repositories/gemini_repository.dart';
+import 'package:awoke_learning_app/features/gemini/domain/usecases/send_message_usecase.dart';
 import 'package:awoke_learning_app/features/mockclasses/data/datasources/youtube_data_source.dart';
 import 'package:awoke_learning_app/features/mockclasses/data/repositories/youtube_repository_impl.dart';
 import 'package:awoke_learning_app/features/mockclasses/domain/repository/youtube_repository.dart';
@@ -7,18 +11,16 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:dio/dio.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
 import 'package:awoke_learning_app/features/mockclasses/domain/usecases/channel_video_usecase.dart';
 import 'package:awoke_learning_app/features/mockclasses/provider/youtube_provider.dart';
-
 import 'package:awoke_learning_app/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:awoke_learning_app/features/auth/domain/repositories/auth_repository.dart';
-
 import 'package:awoke_learning_app/features/auth/data/datasources/google_sign_in_data_source.dart';
 import 'package:awoke_learning_app/features/auth/data/datasources/hive_login_state_data_source.dart';
 import 'package:awoke_learning_app/features/auth/data/models/login_state.dart';
 import 'package:awoke_learning_app/features/auth/domain/usecases/sign_in_with_google.dart';
 import 'package:awoke_learning_app/features/auth/presentation/providers/auth_provider.dart';
+
 
 final getIt = GetIt.instance;
 
@@ -29,11 +31,13 @@ Future<void> configureDependencies() async {
     final supabaseAnonKey = dotenv.env['SUPABASE_ANON_KEY'];
     final webClientId = dotenv.env['WEB_CLIENT_ID'];
     final apiKey = dotenv.env['YOUTUBE_API_KEY'];
+    final googleApiKey = dotenv.env['GEMINI_API_KEY'];
 
     if (supabaseUrl == null ||
         supabaseAnonKey == null ||
         webClientId == null ||
-        apiKey == null) {
+        apiKey == null ||
+        googleApiKey == null) {
       throw Exception('One or more environment variables are null');
     }
 
@@ -44,9 +48,17 @@ Future<void> configureDependencies() async {
     print('Initializing Hive...');
     await Hive.initFlutter();
     Hive.registerAdapter(LoginStateAdapter());
-    final loginBox = await Hive.openBox<LoginState>('loginState');
-    getIt.registerSingleton<Box<LoginState>>(loginBox);
 
+    print('Opening Hive box for login state...');
+    final loginBox = await Hive.openBox<LoginState>('loginState');
+    if (loginBox.isOpen) {
+      getIt.registerSingleton<Box<LoginState>>(loginBox);
+      print('Hive box registered successfully.');
+    } else {
+      throw Exception('Failed to open Hive box for login state.');
+    }
+
+    print('Registering HiveLoginStateDataSource...');
     getIt.registerSingleton<HiveLoginStateDataSource>(
         HiveLoginStateDataSource(getIt<Box<LoginState>>()));
 
@@ -86,6 +98,26 @@ Future<void> configureDependencies() async {
       () => YouTubeProvider(getChannelVideos: getIt<GetChannelVideos>()),
     );
     print("Registered YouTube provider");
+
+    print('Registering Google Generative AI and dependencies...');
+
+    // Register GeminiRemoteDataSource
+    getIt.registerLazySingleton<GeminiRemoteDataSource>(
+      () => GeminiRemoteDataSource(
+        dio: getIt<Dio>(),
+        apiKey: googleApiKey,
+      ),
+    );
+
+    // Register GeminiRepositoryImpl
+    getIt.registerLazySingleton<GeminiRepository>(
+      () => GeminiRepositoryImpl(getIt<GeminiRemoteDataSource>()),
+    );
+
+    // Register SendMessageUseCase
+    getIt.registerLazySingleton<SendMessageUseCase>(
+      () => SendMessageUseCase(getIt<GeminiRepository>()),
+    );
 
     print('Dependency configuration completed successfully');
   } catch (e) {

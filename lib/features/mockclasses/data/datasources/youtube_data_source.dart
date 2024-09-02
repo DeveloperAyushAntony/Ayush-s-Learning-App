@@ -15,7 +15,7 @@ class YouTubeRemoteDataSourceImpl implements YouTubeRemoteDataSource {
   @override
   Future<List<VideoModel>> fetchVideos() async {
     final url =
-        '$baseUrl$channelId&maxResults=25&order=date&type=video&key=$apiKey';
+        '$baseUrl$channelId&maxResults=500&order=date&type=video&key=$apiKey';
 
     try {
       final Response response = await Dio(BaseOptions()).get(url);
