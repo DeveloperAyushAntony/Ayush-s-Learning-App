@@ -1,6 +1,6 @@
 import 'package:awoke_learning_app/core/utils/constants.dart';
 import 'package:awoke_learning_app/core/utils/fonts.dart';
-import 'package:awoke_learning_app/features/auth/presentation/providers/auth_provider.dart';
+import 'package:awoke_learning_app/features/auth_google/presentation/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

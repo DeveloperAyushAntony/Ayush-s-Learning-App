@@ -2,7 +2,7 @@ import 'package:awoke_learning_app/core/utils/app_styles.dart';
 import 'package:awoke_learning_app/core/utils/constants.dart';
 import 'package:awoke_learning_app/core/utils/fonts.dart';
 import 'package:awoke_learning_app/core/widgets/top_gradientcard.dart';
-import 'package:awoke_learning_app/features/auth/presentation/widgets/back_button.dart';
+import 'package:awoke_learning_app/features/auth_google/presentation/widgets/back_button.dart';
 import 'package:awoke_learning_app/features/mainpage/widgets/green_gradient_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

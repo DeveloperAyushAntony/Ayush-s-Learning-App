@@ -1,7 +1,7 @@
-import 'package:awoke_learning_app/features/auth/presentation/screens/auth_page.dart';
-import 'package:awoke_learning_app/features/auth/presentation/screens/loginpage.dart';
-import 'package:awoke_learning_app/features/auth/presentation/screens/otp_page.dart';
-import 'package:awoke_learning_app/features/auth/presentation/screens/user_data_page.dart';
+import 'package:awoke_learning_app/features/auth_google/presentation/screens/auth_page.dart';
+import 'package:awoke_learning_app/features/auth_otp/presentation/screens/screen/loginpage.dart';
+import 'package:awoke_learning_app/features/auth_otp/presentation/screens/screen/otp_page.dart';
+import 'package:awoke_learning_app/features/auth_google/presentation/screens/user_data_page.dart';
 import 'package:awoke_learning_app/features/bottomnavigation/presentation/screen_homepage.dart';
 import 'package:awoke_learning_app/features/categories/grown_ups/presentation/grownups.dart';
 import 'package:awoke_learning_app/features/categories/kg/presentation/kg_page.dart';
@@ -17,7 +17,6 @@ import 'package:awoke_learning_app/features/Razorpay/presentation/screens/course
 import 'package:flutter/material.dart';
 
 Map<String, WidgetBuilder> appRoutes = {
-  
   '/': (context) => OnBoardingScreen(), // Route for the OnBoardingScreen
   '/signup': (context) => const AuthPage(), // Route for the SignUpPage
   '/loginpage': (context) => Loginpage(),

@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:awoke_learning_app/core/utils/app_styles.dart';
 import 'package:awoke_learning_app/core/utils/constants.dart';
 import 'package:awoke_learning_app/core/utils/fonts.dart';
-import 'package:awoke_learning_app/features/auth/presentation/widgets/back_button.dart';
+import 'package:awoke_learning_app/features/auth_google/presentation/widgets/back_button.dart';
 import 'package:awoke_learning_app/features/mainpage/widgets/awoke_logo.dart';
 import 'package:awoke_learning_app/features/Razorpay/presentation/widgets/green_buy_button.dart';
 

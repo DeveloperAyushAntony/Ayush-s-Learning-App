@@ -1,4 +1,4 @@
-import 'package:awoke_learning_app/features/auth/presentation/widgets/back_button.dart';
+import 'package:awoke_learning_app/features/auth_google/presentation/widgets/back_button.dart';
 import 'package:awoke_learning_app/features/mockclasses/provider/youtubeplayerprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

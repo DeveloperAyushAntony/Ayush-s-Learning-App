@@ -1,12 +1,16 @@
 import 'package:awoke_learning_app/features/agora/presentation/providers/agora_provider.dart';
-import 'package:awoke_learning_app/features/auth/data/models/login_state.dart';
-import 'package:awoke_learning_app/features/auth/presentation/providers/auth_provider.dart';
+import 'package:awoke_learning_app/features/auth_google/data/models/login_state.dart';
+import 'package:awoke_learning_app/features/auth_google/presentation/providers/auth_provider.dart';
+import 'package:awoke_learning_app/features/auth_otp/domain/usecases/send_otp_usecase.dart';
+import 'package:awoke_learning_app/features/auth_otp/domain/usecases/verify_otp_usecase.dart';
+import 'package:awoke_learning_app/features/auth_otp/presentation/providers/phone_auth_provider.dart';
+import 'package:awoke_learning_app/features/auth_otp/presentation/screens/screen/loginpage.dart';
 import 'package:awoke_learning_app/features/gemini/domain/usecases/send_message_usecase.dart';
 import 'package:awoke_learning_app/features/gemini/provider/gemini_provider.dart';
 import 'package:awoke_learning_app/features/mockclasses/provider/youtube_provider.dart';
 import 'package:awoke_learning_app/features/bottomnavigation/providers/bottomnav_index_provider.dart';
 import 'package:awoke_learning_app/features/Razorpay/presentation/providers/courseprovider.dart';
-import 'package:awoke_learning_app/features/auth/presentation/providers/phone_number_provider.dart';
+import 'package:awoke_learning_app/features/auth_otp/presentation/providers/phone_number_provider.dart';
 import 'package:awoke_learning_app/core/utils/app_styles.dart';
 import 'package:awoke_learning_app/core/utils/routes.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +28,7 @@ Future<void> requestPermissions() async {
   final statuses = await [
     Permission.camera,
     Permission.microphone,
-    Permission.manageExternalStorage, 
+    Permission.manageExternalStorage,
   ].request();
 
   if (statuses[Permission.camera]!.isDenied ||
@@ -35,30 +39,28 @@ Future<void> requestPermissions() async {
 
 Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-
-  // Preserve splash screen while initializing
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   await dotenv.load(fileName: "lib/.env");
+
+  // Initialize dependencies
   await configureDependencies();
-  await requestPermissions(); // Request permissions before app starts
 
-  final Box<LoginState> loginBox = GetIt.instance.get<Box<LoginState>>();
-  final bool isLoggedIn = loginBox.get('loginState')?.accessToken != null;
+  await requestPermissions();
 
-  // Set preferred device orientations
+  // Only access Hive box *after* dependencies are registered
+  final loginBox = GetIt.instance<Box<LoginState>>();
+  final isLoggedIn = loginBox.get('loginState')?.accessToken != null;
+
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
 
-  // Set system UI overlay style
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark,
-    ),
-  );
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: Brightness.dark,
+  ));
 
   runApp(AwokeLearningApp(isLoggedIn: isLoggedIn));
   FlutterNativeSplash.remove();
@@ -76,11 +78,14 @@ class AwokeLearningApp extends StatelessWidget {
         ChangeNotifierProvider(
             create: (_) => GetIt.instance<YouTubeProvider>()..fetchVideos()),
         ChangeNotifierProvider(create: (_) => BottomNavIndexProvider()),
-        
         ChangeNotifierProvider(create: (_) => CourseProvider()),
         ChangeNotifierProvider(create: (_) => PhoneNumberProvider()),
         ChangeNotifierProvider(
           create: (_) => GeminiProvider(GetIt.instance<SendMessageUseCase>()),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => getIt<PhoneAuthProvider>(),
+          child: Loginpage(),
         ),
         ChangeNotifierProvider(create: (_) => GetIt.instance<AuthProvider>()),
         ChangeNotifierProvider(create: (_) => getIt<AgoraProvider>()),

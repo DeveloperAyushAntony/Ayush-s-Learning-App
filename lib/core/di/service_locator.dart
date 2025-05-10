@@ -1,9 +1,16 @@
-import 'package:awoke_learning_app/core/services/agora_service.dart' show AgoraService;
+import 'package:awoke_learning_app/core/services/agora_service.dart'
+    show AgoraService;
 import 'package:awoke_learning_app/features/agora/data/datasources/agoradatasource.dart';
 import 'package:awoke_learning_app/features/agora/data/repositories/agora_repo_impl.dart';
 import 'package:awoke_learning_app/features/agora/domain/repositories/agora_repo.dart';
 import 'package:awoke_learning_app/features/agora/domain/usecases/agora_use_case.dart';
 import 'package:awoke_learning_app/features/agora/presentation/providers/agora_provider.dart';
+import 'package:awoke_learning_app/features/auth_otp/data/datasources/supabase_auth_datasource.dart';
+import 'package:awoke_learning_app/features/auth_otp/data/repositories/phone_auth_repo_impl.dart';
+import 'package:awoke_learning_app/features/auth_otp/domain/repositories/phone_auth_repo.dart';
+import 'package:awoke_learning_app/features/auth_otp/domain/usecases/send_otp_usecase.dart';
+import 'package:awoke_learning_app/features/auth_otp/domain/usecases/verify_otp_usecase.dart';
+import 'package:awoke_learning_app/features/auth_otp/presentation/providers/phone_auth_provider.dart';
 import 'package:awoke_learning_app/features/gemini/data/datasources/gemini_data_source.dart';
 import 'package:awoke_learning_app/features/gemini/data/repositories/gemini_repository_impl.dart';
 import 'package:awoke_learning_app/features/gemini/domain/repositories/gemini_repository.dart';
@@ -19,13 +26,13 @@ import 'package:dio/dio.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:awoke_learning_app/features/mockclasses/domain/usecases/channel_video_usecase.dart';
 import 'package:awoke_learning_app/features/mockclasses/provider/youtube_provider.dart';
-import 'package:awoke_learning_app/features/auth/data/repositories/auth_repository_impl.dart';
-import 'package:awoke_learning_app/features/auth/domain/repositories/auth_repository.dart';
-import 'package:awoke_learning_app/features/auth/data/datasources/google_sign_in_data_source.dart';
-import 'package:awoke_learning_app/features/auth/data/datasources/hive_login_state_data_source.dart';
-import 'package:awoke_learning_app/features/auth/data/models/login_state.dart';
-import 'package:awoke_learning_app/features/auth/domain/usecases/sign_in_with_google.dart';
-import 'package:awoke_learning_app/features/auth/presentation/providers/auth_provider.dart';
+import 'package:awoke_learning_app/features/auth_google/data/repositories/auth_repository_impl.dart';
+import 'package:awoke_learning_app/features/auth_google/domain/repositories/auth_repository.dart';
+import 'package:awoke_learning_app/features/auth_google/data/datasources/google_sign_in_data_source.dart';
+import 'package:awoke_learning_app/features/auth_google/data/datasources/hive_login_state_data_source.dart';
+import 'package:awoke_learning_app/features/auth_google/data/models/login_state.dart';
+import 'package:awoke_learning_app/features/auth_google/domain/usecases/sign_in_with_google.dart';
+import 'package:awoke_learning_app/features/auth_google/presentation/providers/auth_provider.dart';
 
 final getIt = GetIt.instance;
 
@@ -72,6 +79,30 @@ Future<void> configureDependencies() async {
 
     final googleSignIn = GoogleSignIn(serverClientId: webClientId);
     getIt.registerSingleton<GoogleSignIn>(googleSignIn);
+    // Register the datasource (only once)
+    getIt.registerLazySingleton<SupabaseAuthDatasource>(
+      () => SupabaseAuthDatasource(getIt<SupabaseClient>()),
+    );
+
+// Register the repository (which depends on the datasource)
+    getIt.registerLazySingleton<PhoneAuthRepository>(
+      () => PhoneAuthRepoImpl(getIt<SupabaseAuthDatasource>()),
+    );
+
+// Register use cases (which depend on the repository)
+    getIt.registerLazySingleton<SendOtpUseCase>(
+      () => SendOtpUseCase(getIt<PhoneAuthRepository>()),
+    );
+
+    getIt.registerLazySingleton<VerifyOtpUseCase>(
+      () => VerifyOtpUseCase(getIt<PhoneAuthRepository>()),
+    );
+
+// Register the provider (which depends on the use cases)
+    getIt.registerFactory(() => PhoneAuthProvider(
+          sendOtp: getIt<SendOtpUseCase>(),
+          verifyOtp: getIt<VerifyOtpUseCase>(),
+        ));
 
     getIt.registerSingleton<AuthRepository>(
         AuthRepositoryImpl(getIt<SupabaseClient>(), getIt<GoogleSignIn>()));
@@ -126,12 +157,16 @@ Future<void> configureDependencies() async {
     getIt.registerLazySingleton<SendMessageUseCase>(
       () => SendMessageUseCase(getIt<GeminiRepository>()),
     );
-  getIt.registerLazySingleton<AgoraRemoteDataSource>(() => AgoraRemoteDataSource());
-  getIt.registerLazySingleton<AgoraRepository>(() => AgoraRepositoryImpl(getIt()));
-  getIt.registerLazySingleton<GenerateAgoraTokenUseCase>(() => GenerateAgoraTokenUseCase(getIt()));
-  getIt.registerLazySingleton<AgoraService>(() => AgoraService());
-  getIt.registerFactory(() => AgoraProvider(getIt(), getIt()));
+    getIt.registerLazySingleton<AgoraRemoteDataSource>(
+        () => AgoraRemoteDataSource());
+    getIt.registerLazySingleton<AgoraRepository>(
+        () => AgoraRepositoryImpl(getIt()));
+    getIt.registerLazySingleton<GenerateAgoraTokenUseCase>(
+        () => GenerateAgoraTokenUseCase(getIt()));
+    getIt.registerLazySingleton<AgoraService>(() => AgoraService());
+    getIt.registerFactory(() => AgoraProvider(getIt(), getIt()));
 
+    print('✅ Registered PhoneAuthProvider');
     print('Dependency configuration completed successfully');
   } catch (e) {
     print('Error configuring dependencies: $e');
