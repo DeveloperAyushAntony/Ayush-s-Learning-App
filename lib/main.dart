@@ -1,8 +1,6 @@
 import 'package:awoke_learning_app/features/agora/presentation/providers/agora_provider.dart';
 import 'package:awoke_learning_app/features/auth_google/data/models/login_state.dart';
 import 'package:awoke_learning_app/features/auth_google/presentation/providers/auth_provider.dart';
-import 'package:awoke_learning_app/features/auth_otp/domain/usecases/send_otp_usecase.dart';
-import 'package:awoke_learning_app/features/auth_otp/domain/usecases/verify_otp_usecase.dart';
 import 'package:awoke_learning_app/features/auth_otp/presentation/providers/phone_auth_provider.dart';
 import 'package:awoke_learning_app/features/auth_otp/presentation/screens/screen/loginpage.dart';
 import 'package:awoke_learning_app/features/gemini/domain/usecases/send_message_usecase.dart';
@@ -13,6 +11,7 @@ import 'package:awoke_learning_app/features/Razorpay/presentation/providers/cour
 import 'package:awoke_learning_app/features/auth_otp/presentation/providers/phone_number_provider.dart';
 import 'package:awoke_learning_app/core/utils/app_styles.dart';
 import 'package:awoke_learning_app/core/utils/routes.dart';
+import 'package:awoke_learning_app/features/user_data/presentation/providers/user_form_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -82,6 +81,9 @@ class AwokeLearningApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => PhoneNumberProvider()),
         ChangeNotifierProvider(
           create: (_) => GeminiProvider(GetIt.instance<SendMessageUseCase>()),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => getIt<UserFormProvider>(),
         ),
         ChangeNotifierProvider(
           create: (_) => getIt<PhoneAuthProvider>(),

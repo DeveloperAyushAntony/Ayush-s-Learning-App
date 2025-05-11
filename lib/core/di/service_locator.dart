@@ -18,6 +18,11 @@ import 'package:awoke_learning_app/features/gemini/domain/usecases/send_message_
 import 'package:awoke_learning_app/features/mockclasses/data/datasources/youtube_data_source.dart';
 import 'package:awoke_learning_app/features/mockclasses/data/repositories/youtube_repository_impl.dart';
 import 'package:awoke_learning_app/features/mockclasses/domain/repository/youtube_repository.dart';
+import 'package:awoke_learning_app/features/user_data/data/datasources/user_remote_data_source.dart';
+import 'package:awoke_learning_app/features/user_data/data/repositories/user_repository_impl.dart';
+import 'package:awoke_learning_app/features/user_data/domain/repositories/user_repository.dart';
+import 'package:awoke_learning_app/features/user_data/domain/usecases/add_user_usecase.dart';
+import 'package:awoke_learning_app/features/user_data/presentation/providers/user_form_provider.dart';
 import 'package:get_it/get_it.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -79,6 +84,19 @@ Future<void> configureDependencies() async {
 
     final googleSignIn = GoogleSignIn(serverClientId: webClientId);
     getIt.registerSingleton<GoogleSignIn>(googleSignIn);
+    // Data sources
+    getIt.registerLazySingleton<UserRemoteDataSource>(
+      () => UserRemoteDataSourceImpl(client: getIt<SupabaseClient>()),
+    );
+    // Repositories
+    getIt.registerLazySingleton<UserRepository>(
+        () => UserRepositoryImpl(remoteDataSource: getIt()));
+
+    // Use cases
+    getIt.registerLazySingleton(() => AddUserUseCase(repository: getIt()));
+
+    // Providers
+    getIt.registerFactory(() => UserFormProvider(addUserUseCase: getIt()));
     // Register the datasource (only once)
     getIt.registerLazySingleton<SupabaseAuthDatasource>(
       () => SupabaseAuthDatasource(getIt<SupabaseClient>()),

@@ -1,5 +1,5 @@
 import 'package:awoke_learning_app/features/auth_google/presentation/providers/auth_provider.dart';
-import 'package:awoke_learning_app/features/auth_google/presentation/screens/user_data_page.dart';
+import 'package:awoke_learning_app/features/user_data/presentation/presentation/screens/user_data_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
