@@ -1,4 +1,4 @@
-# awoke_learning_app
+#Ayush's Learning app
 
 A new Flutter project.
 
